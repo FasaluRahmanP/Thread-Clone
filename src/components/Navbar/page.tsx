@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../../../public/assets/threads-logo-white.svg";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -38,7 +39,9 @@ const Navbar = () => {
               </div>
               <div className='hidden md:block'>
                 <div className='ml-4 flex items-center space-x-4'>
+                  <Link href={"/Login"}>
                   <button className='text-black font-medium bg-[white] rounded-lg h-9 w-20 mr-7'>Log in</button>
+                  </Link>
                 </div>
               </div>
             </div>
