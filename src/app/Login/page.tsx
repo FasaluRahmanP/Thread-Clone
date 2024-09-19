@@ -11,7 +11,7 @@ const Login = () => {
         <Image
           src={MainBg}
           alt='MainBg'
-          className='scale-x-125 scale-y-150 object-cover'
+          className='scale-x-105 scale-y-90 object-cover'
         />
       </div>
       <div className='relative z-10 max-w-md w-full space-y-6 p-6 sm:p-8 md:p-10 lg:p-14 rounded-xl mt-24'>
