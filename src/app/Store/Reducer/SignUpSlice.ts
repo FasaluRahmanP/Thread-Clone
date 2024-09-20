@@ -2,30 +2,30 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface SignupState {
-    Name: string;
-    UserName: string;
-    Email: string;
-    Phone: string,
-    Password: string;
-    ConfirmPassword: string;
+    name: string;
+    username: string;
+    email: string;
+    phoneNumber: string,
+    password: string;
+    confirmPassword: string;
     status: "Idle" | "Loading" | "Successfull" | "Failed";
     error: string | null;
 }
 const initialState: SignupState = {
-    Name: "",
-    UserName: "",
-    Email: "",
-    Phone: "",
-    Password: "",
-    ConfirmPassword: "",
+    name: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
     status: "Idle",
     error: null
 }
 export const SignupUser = createAsyncThunk(
     'signup/signupUser',
-    async (userData: { Name: string; UserName: string; Email: string; Phone: string; Password: string; }, { rejectWithValue }) => {
+    async (userData: { name: string; username: string; email: string; phoneNumber: string; password: string; }, { rejectWithValue }) => {
         try {
-            const response = await axios.post("http://social-media-rest-apis.onrender.com/api/users/signup", userData)
+            const response = await axios.post("https://social-media-rest-apis.onrender.com/api/users/signup", userData)
             return response.data;
         }
         catch (error: any) {
@@ -39,22 +39,22 @@ const SignupSlice = createSlice({
     initialState,
     reducers: {
         SetName: (state, action) => {
-            state.Name = action.payload
+            state.name = action.payload
         },
         SetUserName: (state, action) => {
-            state.UserName = action.payload
+            state.username = action.payload
         },
         SetEmail: (state, action) => {
-            state.Email = action.payload
+            state.email = action.payload
         },
         SetPhone: (state, action) => {
-            state.Phone = action.payload
+            state.phoneNumber = action.payload
         },
         SetPassword: (state, action) => {
-            state.Password = action.payload
+            state.password = action.payload
         },
         SetConfirmPassword: (state, action) => {
-            state.ConfirmPassword = action.payload
+            state.confirmPassword = action.payload
         },
     },
     extraReducers: (builder) => {

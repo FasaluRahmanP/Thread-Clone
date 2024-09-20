@@ -1,10 +1,38 @@
-import React from 'react';
+"use client"
 import MainBg from "../../../public/assets/MainBg-Photoroom.png";
 import Image from 'next/image';
 import Scan from '../../../public/assets/Scanner.png';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../Hooks/useAppDispatch";
+import { fetchuser } from "../Store/Reducer/UserSlice";
 
-const Login = () => {
+const Login: React.FC = () => {
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchuser());
+  // }, [dispatch]);
+
+  // const router = useRouter();
+  // const { users, status, error } = useAppSelector((state) => state.users);
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const user = users.find(user => user.username === username);
+  //   if (user) {
+  //     localStorage.setItem('userId', user._id);
+
+  //     console.log('User exists, proceed with login');
+  //     console.log(user);
+  //     router.push('/main');
+  //   } else {
+  //     console.log('User does not exist, redirect to the signup page');
+  //     router.push('/signup');
+  //   }
+  // };
+
   return (
     <div className='relative min-h-screen flex items-center justify-center overflow-hidden'>
       <div className='absolute top-0 left-0 w-full h-full overflow-hidden'>

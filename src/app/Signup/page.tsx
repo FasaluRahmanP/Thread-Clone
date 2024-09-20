@@ -1,22 +1,30 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Rootstate } from '../Store/Store';
 import { SetName, SetUserName, SetEmail, SetPhone, SetPassword, SetConfirmPassword } from "@/app/Store/Reducer/SignUpSlice";
 import { SignupUser } from '@/app/Store/Reducer/SignUpSlice';
+import { useRouter } from 'next/navigation';
 
-const Signup: React.FC = () =>{
+const Signup: React.FC = () => {
+    const router = useRouter();
     const dispatch = useDispatch<AppDispatch>();
-    const { Name, UserName, Email, Phone, Password, ConfirmPassword, status, error } = useSelector((state: Rootstate) => state.signup);
+    const { name, username, email, phoneNumber, password, confirmPassword, status, error } = useSelector((state: Rootstate) => state.signup);
 
     const HandleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (Password === ConfirmPassword) {
-            dispatch(SignupUser({ Name, UserName, Email, Phone, Password }));
+        if (password === confirmPassword) {
+            dispatch(SignupUser({ name, username, email, phoneNumber, password }));
         } else {
             console.log("Passwords do not match");
         }
     };
+
+    useEffect(() => {
+        if (status === "Successfull") {
+            router.push('/Login');
+        }
+    }, [status]);
 
     return (
         <div className='relative min-h-screen flex items-center justify-center overflow-hidden'>
@@ -34,7 +42,7 @@ const Signup: React.FC = () =>{
                             required
                             className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 placeholder-gray-500 text-white'
                             placeholder='Name:'
-                            value={Name}
+                            value={name}
                             onChange={(e) => dispatch(SetName(e.target.value))}
                         />
                         <input
@@ -43,7 +51,7 @@ const Signup: React.FC = () =>{
                             required
                             className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 mt-3 placeholder-gray-500 text-white'
                             placeholder='Username:'
-                            value={UserName}
+                            value={username}
                             onChange={(e) => dispatch(SetUserName(e.target.value))}
                         />
                         <input
@@ -52,7 +60,7 @@ const Signup: React.FC = () =>{
                             required
                             className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 mt-3 placeholder-gray-500 text-white'
                             placeholder='Email:'
-                            value={Email}
+                            value={email}
                             onChange={(e) => dispatch(SetEmail(e.target.value))}
                         />
                         <input
@@ -61,7 +69,7 @@ const Signup: React.FC = () =>{
                             required
                             className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 mt-3 placeholder-gray-500 text-white'
                             placeholder='Phone No:'
-                            value={Phone}
+                            value={phoneNumber}
                             onChange={(e) => dispatch(SetPhone(e.target.value))}
                         />
                         <input
@@ -70,7 +78,7 @@ const Signup: React.FC = () =>{
                             required
                             className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 mt-3 placeholder-gray-500 text-white'
                             placeholder='Password:'
-                            value={Password}
+                            value={password}
                             onChange={(e) => dispatch(SetPassword(e.target.value))}
                         />
                         <input
@@ -79,7 +87,7 @@ const Signup: React.FC = () =>{
                             required
                             className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 mt-3 placeholder-gray-500 text-white'
                             placeholder='Confirm Password:'
-                            value={ConfirmPassword}
+                            value={confirmPassword}
                             onChange={(e) => dispatch(SetConfirmPassword(e.target.value))}
                         />
                         <button
