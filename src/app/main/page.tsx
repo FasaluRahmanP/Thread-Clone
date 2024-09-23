@@ -1,12 +1,13 @@
-import Sidebar from '@/components/Sidebar/sidebar'
-import React from 'react'
+import React from 'react';
 
-const page = () => {
+const Page = () => {
   return (
-    <div>
-        <Sidebar></Sidebar>
+    <div className="flex items-center justify-center h-screen">
+      <div className="h-full w-6/12 bg-[#201d1d] rounded-3xl">
+      
+      </div>
     </div>
-  )
+  );
 }
 
-export default page
+export default Page;
