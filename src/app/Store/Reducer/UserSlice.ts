@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
 export const fetchuser=createAsyncThunk("user/fetchuser",async()=>{
     const response=await axios.get("https://social-media-rest-apis.onrender.com/api/users/")
     return response.data.users
@@ -42,3 +41,4 @@ const userSlice=createSlice({
 
     }
 })
+export default userSlice.reducer

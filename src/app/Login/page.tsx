@@ -6,32 +6,35 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../Hooks/useAppDispatch";
-import { fetchuser } from "../Store/Reducer/UserSlice";
+import ReusableInput from "@/app/Ui/StyledLogin";
+import { fetchuser } from '../Store/Reducer/UserSlice'
 
 const Login: React.FC = () => {
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchuser());
-  // }, [dispatch]);
+  const [email, setemail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useAppDispatch()
+  const router = useRouter();
+  const { users, status, error } = useAppSelector((state) => state.users);
 
-  // const router = useRouter();
-  // const { users, status, error } = useAppSelector((state) => state.users);
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const user = users.find(user => user.username === username);
-  //   if (user) {
-  //     localStorage.setItem('userId', user._id);
+  useEffect(() => {
+    dispatch(fetchuser()); 
+  }, [dispatch]);
 
-  //     console.log('User exists, proceed with login');
-  //     console.log(user);
-  //     router.push('/main');
-  //   } else {
-  //     console.log('User does not exist, redirect to the signup page');
-  //     router.push('/signup');
-  //   }
-  // };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const user = users.find(user => user.email === email);
+    if (user) {
+      localStorage.setItem('userId', user.id);
+
+      console.log('User exists, proceed with login');
+      console.log(user);
+      router.push('/main');
+    } else {
+      console.log('User does not exist, redirect to the signup page');
+      router.push('/signup');
+    }
+  };
 
   return (
     <div className='relative min-h-screen flex items-center justify-center overflow-hidden'>
@@ -46,21 +49,19 @@ const Login: React.FC = () => {
         <p className='text-center text-sm sm:text-xl font-normal text-white'>
           Log in with your Instagram account
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
-            <input
+            <ReusableInput
               type='email'
-              autoComplete='none'
-              required
-              className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 placeholder-gray-400 text-white'
               placeholder='Username, phone or email'
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
             />
-            <input
+            <ReusableInput
               type='password'
-              autoComplete='none'
-              required
-              className='bg-[#201d1d] appearance-none rounded-xl block w-full px-3 py-3 mt-2 placeholder-gray-400 text-white'
               placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type='submit'
