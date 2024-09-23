@@ -32,7 +32,7 @@ const Login: React.FC = () => {
       router.push('/main');
     } else {
       console.log('User does not exist, redirect to the signup page');
-      router.push('/signup');
+      router.push('/Signup');
     }
   };
 
