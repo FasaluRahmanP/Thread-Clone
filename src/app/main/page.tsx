@@ -1,9 +1,10 @@
 "use client"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../Hooks/useAppDispatch';
 import { fetchPosts } from '../Store/Reducer/PostSlice';
 import { fetchuser } from '../Store/Reducer/UserSlice';
 import TimeAgo from '@/components/TimeAgo/page';
+import ProfileImage from '@/components/ProfileImage/page';
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +16,20 @@ const Page = () => {
     dispatch(fetchPosts())
   }, [dispatch])
 
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [userId, setUserId] = useState<string>('');
+  const [userProfilePic, setProfilePic] = useState<string>('');
+  useEffect(() => {
+    if (currentUser) {
+        setUserId(currentUser._id);
+        if (currentUser.profilePic) {
+            setProfilePic(currentUser.profilePic);
+        } else {
+            setProfilePic('https://cdn-icons-png.flaticon.com/512/149/149071.png');
+        }
+    }
+}, [currentUser]);
+
   return (
     <>
       <nav><h1 className='main-heading'>For you</h1></nav>
@@ -24,6 +39,11 @@ const Page = () => {
             <div className='main-new-container'>
               <div className='main-new'>
                 <div className='main-dp'>
+                <ProfileImage
+                                profilePic={currentUser?.profilePic}
+                                altText="profile"
+                                className='main-profile-image'
+                            />
                 </div>
                 <div className='main-text'>
                   <span>What's new?</span>

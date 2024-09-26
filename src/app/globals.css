@@ -56,7 +56,7 @@ body {
 
 .main-new {
   color: #696969;
-  padding: 12px 24px;
+  padding: 10px 1px;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -149,4 +149,11 @@ body {
 .main-profile-name:hover{
   text-decoration: underline;
   cursor: pointer;
+}
+.main-profile-image{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
 }
