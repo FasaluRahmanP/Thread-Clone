@@ -141,19 +141,78 @@ body {
   border-radius: 8px;
   align-self: flex-start;
 }
-.main-profile-name{
+
+.main-profile-name {
   color: #F3F5F7;
   font-size: 15px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.main-profile-name:hover{
+
+.main-profile-name:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.main-profile-image{
+
+.main-profile-image {
   width: 50px;
   height: 50px;
   object-fit: cover;
   margin-right: 10px;
   border-radius: 50%;
+}
+
+/* //Search-Page-Style  */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0A0A0A;
+  padding: 10px 16px;
+  border-radius: 15px;
+  margin-top: 30px;
+  border: 2px solid #383939;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.search-input {
+  padding: 1px;
+  margin-left: 10px;
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  caret-color: #F3F5F7;
+  color: #F3F5F7;
+}
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search-result-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #181818;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.search-post-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }

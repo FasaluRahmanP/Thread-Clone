@@ -8,7 +8,8 @@ interface user{
     id:string,
     name:string,
     email:string,
-    username:string
+    username:string,
+    ProfilePic:string
 
 }
 interface userstate{
