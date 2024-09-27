@@ -9,7 +9,9 @@ interface user{
     name:string,
     email:string,
     username:string,
-    ProfilePic:string
+    profilePic:string,
+    followers:string[];
+    following:string[];
 
 }
 interface userstate{

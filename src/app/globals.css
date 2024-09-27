@@ -216,3 +216,34 @@ body {
   -o-object-fit: cover;
   object-fit: cover;
 }
+.search-user-details{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.search-user-info{
+  display: flex;
+  flex-direction: column;
+}
+.search-post-text{
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #383939;
+}
+.search-profile-name{
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+.search-follow-button{
+  background-color: #181818;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  align-self: flex-end;
+}

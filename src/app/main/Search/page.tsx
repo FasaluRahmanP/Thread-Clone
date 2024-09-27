@@ -45,12 +45,27 @@ const Page = () => {
               [...filteredUsers].reverse().map(user => (
                 <div key={user.id} className="search-result-item">
                   <div className='search-post-user'>
-                    <img 
-                      src={user.ProfilePic || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'} 
-                      alt='Profile' 
-                      className='search-profile-image' 
-                      onError={(e) => e.currentTarget.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'} 
-                    />
+                    {user.profilePic ? (
+                      <img
+                        src={user.profilePic}
+                        alt='Profile'
+                        className='search-profile-image'
+                      />
+                    ) : (
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                        alt="profile"
+                        className='search-profile-image'
+                      />
+                    )}
+                    <div className='search-user-details'>
+                      <div className='search-user-info'>
+                        <p className='search-post-text'>{user.name}</p>
+                        <p className='search-profile-name'>{user.username}</p>
+                        <p>{user.followers.length} followers</p>
+                      </div>
+                      <button className='search-follow-button'>Follow</button>
+                    </div>
                   </div>
                 </div>
               ))
