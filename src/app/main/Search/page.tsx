@@ -29,8 +29,8 @@ const Page = () => {
   return (
     <>
       <nav><h1 className='main-heading'>Search</h1></nav>
-      <div className="flex items-center justify-center h-screen">
-        <div className="h-full w-6/12 bg-[#201d1d] rounded-3xl">
+      <div className="flex items-center justify-center h-auto">
+        <div className="h-auto w-6/12 bg-[#201d1d] rounded-3xl ">
           <div className='search-bar'>
             <IoSearch style={{ color: "grey", fontSize: "20px" }} />
             <input
@@ -40,6 +40,7 @@ const Page = () => {
               onChange={handleSearchChange}
             />
           </div>
+          <p className='search-suggestions'>Follow suggestions</p>
           <div className='search-result'>
             {filteredUsers.length > 0 ? (
               [...filteredUsers].map(user => (
