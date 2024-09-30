@@ -1,3 +1,4 @@
+import { axiosInstance } from "@/Axios/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -25,7 +26,7 @@ export const SignupUser = createAsyncThunk(
     'signup/signupUser',
     async (userData: { name: string; username: string; email: string; phoneNumber: string; password: string; }, { rejectWithValue }) => {
         try {
-            const response = await axios.post("https://social-media-rest-apis.onrender.com/api/users/signup", userData)
+            const response = await axiosInstance.post("api/users/signup", userData)
             return response.data;
         }
         catch (error: any) {

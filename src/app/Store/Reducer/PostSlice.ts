@@ -1,3 +1,4 @@
+import { axiosInstance } from "@/Axios/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -38,7 +39,7 @@ export const addNewPost = createAsyncThunk(
     async (newPost: { userId: string; text: string; image: string }, { rejectWithValue }) => {
         try {
             console.log('Sending new post data:', newPost);
-            const response = await axios.post('https://social-media-rest-apis.onrender.com/api/posts', newPost);
+            const response = await axiosInstance.post('api/posts', newPost);
             console.log("Received response:", response);
             console.log("Response data:", response.data);
             return response.data;
