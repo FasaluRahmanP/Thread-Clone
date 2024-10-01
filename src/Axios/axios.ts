@@ -1,7 +1,7 @@
 import axios from "axios";
 
  export const axiosInstance=axios.create({
-baseURL:"social-media-rest-apis.onrender.com/"
+baseURL:"https://social-media-rest-apis.onrender.com/"
 })
 axiosInstance.interceptors.response.use((response)=>{
     return response

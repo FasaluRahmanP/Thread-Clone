@@ -29,6 +29,17 @@ const Page = () => {
   }, [dispatch])
 
   useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId && users.length > 0) {
+        const user = users.find((user) => user.id === userId);
+        if (user) {
+            setCurrentUser(user);
+            setUserName(user.username || '');
+        }
+    }
+}, [users]);
+
+  useEffect(() => {
     if (currentUser) {
       setUserId(currentUser._id);
       if (currentUser.profilePic) {
@@ -44,7 +55,7 @@ const Page = () => {
       <Comment
         isOpen={isCommentOpen}
         onClose={closeComment}
-        postId={"postId"}
+        postId={postId}
         userProfilePic={userProfilePic}
         userId={userId}
         username={username}
@@ -104,7 +115,7 @@ const Page = () => {
                         likedUsers={post.likes}
                       ></LikeButton>
                     ):(
-                      <p>Please Log Into Like This Post</p>
+                      <p>Please Log In</p>
                     )}
                     <div className='main-reply' onClick={()=>{
                       openComment();

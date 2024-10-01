@@ -7,34 +7,29 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../Hooks/useAppDispatch";
 import ReusableInput from "@/app/Ui/StyledLogin";
-import { fetchuser } from '../Store/Reducer/UserSlice'
+import { loginUser } from "../Store/Reducer/LoginSlice";
 
 const Login: React.FC = () => {
-  const [email, setemail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch()
   const router = useRouter();
-  const { users, status, error } = useAppSelector((state) => state.users);
+  const { user, status, error } = useAppSelector((state) => state.Login);
+
 
   useEffect(() => {
-    dispatch(fetchuser()); 
-  }, [dispatch]);
-
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const user = users.find(user => user.email === email);
-    if (user) {
-      localStorage.setItem('userId', user.id);
-
-      console.log('User exists, proceed with login');
-      console.log(user);
-      router.push('/main');
-    } else {
-      console.log('User does not exist, redirect to the signup page');
-      router.push('/Signup');
+    if (status === 'SUCCESSFULL' && user) {
+        const userId = user._id;
+        localStorage.setItem('userId', userId);
+        router.push('/main');
+        console.log(userId)
     }
-  };
+}, [status, user, router]);
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(loginUser({ username, password }));
+};
 
   return (
     <div className='relative min-h-screen flex items-center justify-center overflow-hidden'>
@@ -52,10 +47,10 @@ const Login: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <ReusableInput
-              type='email'
+              type='text'
               placeholder='Username, phone or email'
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <ReusableInput
               type='password'

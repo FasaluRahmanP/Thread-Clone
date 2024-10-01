@@ -1,6 +1,7 @@
 import axios from "axios";
-import {ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import ProfileImage from "../ProfileImage/page";
+import { axiosInstance } from "@/Axios/axios";
 
 interface CommentProps {
   isOpen: boolean;
@@ -24,13 +25,13 @@ const Comment: React.FC<CommentProps> = ({
   const [post, setPost] = useState<any>(null);
   const [comment, setComment] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-
   useEffect(() => {
     if (isOpen) {
       const fetchPost = async () => {
+        // console.log(postId)
         try {
-          const response = await axios.get(
-            `https://social-media-rest-apis.onrender.com/api/posts/post/${postId}`
+          const response = await axiosInstance.get(
+            `api/posts/post/${postId}`
           );
           setPost(response.data.post);
           console.log("This is a Post", response.data.post);
@@ -52,8 +53,8 @@ const Comment: React.FC<CommentProps> = ({
     };
     try {
       setLoading(true);
-      const response = await axios.post(
-        `https://social-media-rest-apis.onrender.com/api/posts/${postId}/reply`,
+      const response = await axiosInstance.post(
+        `api/posts/${postId}/reply`,
         newComment
       );
       setComment('');
@@ -69,11 +70,11 @@ const Comment: React.FC<CommentProps> = ({
   return (
     <div className='comment-overlay'>
       <div className='comment-modal'>
-        <div className='comment-header'>
-          <button className='comment-close-btn' onClick={onClose}>
-            &times;
-          </button>
-        </div>
+
+        <button className='comment-close-btn' onClick={onClose}>
+          &times;
+        </button>
+
         {post && (
           <div className="comment-post-content">
             <div className="comment-user-info">
@@ -108,39 +109,41 @@ const Comment: React.FC<CommentProps> = ({
           </div>
         )}
         <div className="comment-user">{children}</div>
-          <div className="comment-body">
-            <textarea
+        <div className="comment-body">
+          <textarea
+            className="comment-body"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder="Write a comment..."
+            placeholder="Reply to..."
           />
-          </div>
-          <div className="comment.footer">
+        </div>
+        <div className="comment.footer">
           <button onClick={handleCommentSubmit} disabled={loading} className="comment-submit-btn">
-            {loading ? "Posting..." : "Post Comment"}
+            {loading ? "Posting..." : "Post"}
           </button>
         </div>
         <div className="comment-repliesContainer">
-                    {post?.replies?.length > 0 ? (
-                        post.replies.map((reply: any, index: number) => (
-                            <div key={index} className="comment.reply">
-                                <div className="comment-reply-user-info">
-                                    <ProfileImage profilePic={reply.userProfilePic
-                                    }
-                                        altText={reply.username}
-                                        className="comment-profile-image"
-                                    />
-                                    <p>{reply.username}</p>
-                                </div>
-                                <p>{reply.text}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No replies yet.</p>
-                    )}
+          {post?.replies?.length > 0 ? (
+            post.replies.map((reply: any, index: number) => (
+              <div key={index} className="comment.reply">
+                <div className="comment-reply-user-info">
+                  <ProfileImage profilePic={reply.userProfilePic
+                  }
+                    altText={reply.username}
+                    className="comment-profile-image"
+                  />
+                  <p>{reply.username}</p>
                 </div>
-                
-            </div>
+                <p>{reply.text}</p>
+              </div>
+            ))
+          ) : (
+            <p>No replies yet.</p>
+          )}
         </div>
-  )}
+
+      </div>
+    </div>
+  )
+}
 export default Comment;
