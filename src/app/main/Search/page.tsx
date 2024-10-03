@@ -63,7 +63,7 @@ const Page = () => {
                       <div className='search-user-info'>
                         <p className='search-post-text'>{user.name}</p>
                         <p className='search-profile-name'>{user.username}</p>
-                        <p>{user.followers.length} followers</p>
+                        <p className='search-followers'>{user.followers.length} followers</p>
                       </div>
                       <button className='search-follow-button'>Follow</button>
                     </div>

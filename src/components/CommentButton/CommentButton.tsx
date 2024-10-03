@@ -7,7 +7,7 @@ import React from 'react'
 const ReplyButton: React.FC<CommentButtonProps> = ({CommentCount}) => {
   return (
     <button className="Comment-replyButton">
-      <FaRegComment />
+      <FaRegComment style={{ fontSize: '18px'}}/>
       <span >{CommentCount}</span>
     </button>
   )

@@ -46,7 +46,7 @@ const LikeButton = ({ initialLike, postId, userId, likedUsers }: LikeButtonProps
 
     return (
         <button onClick={handleLike} className="comment-likeButton">
-            <CiHeart fill={isLiked ? 'currentColor' : 'transparent'} />
+            <CiHeart fill={isLiked ? 'currentColor' : 'transparent'} style={{ fontSize: '18px'}} />
             <span>{like}</span>
         </button>
     )

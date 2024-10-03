@@ -28,8 +28,7 @@ const Comment: React.FC<CommentProps> = ({
   useEffect(() => {
     if (isOpen) {
       const fetchPost = async () => {
-        // console.log(postId)
-        try {
+           try {
           const response = await axiosInstance.get(
             `api/posts/post/${postId}`
           );
@@ -45,7 +44,7 @@ const Comment: React.FC<CommentProps> = ({
 
   const handleCommentSubmit = async () => {
     if (!comment.trim()) return;
-    const newComment = {
+    const reply = {
       text: comment,
       userId: userId,
       username: username,
@@ -55,8 +54,8 @@ const Comment: React.FC<CommentProps> = ({
       setLoading(true);
       const response = await axiosInstance.post(
         `api/posts/${postId}/reply`,
-        newComment
-      );
+        reply
+      ); 
       setComment('');
     } catch (error) {
       console.error("Failed to reply to post:", error);
@@ -64,7 +63,7 @@ const Comment: React.FC<CommentProps> = ({
       setLoading(false);
     }
   };
-
+ 
   if (!isOpen) return null;
 
   return (
@@ -132,9 +131,10 @@ const Comment: React.FC<CommentProps> = ({
                     altText={reply.username}
                     className="comment-profile-image"
                   />
-                  <p>{reply.username}</p>
+                  <h4>{reply.username}</h4>
                 </div>
                 <p>{reply.text}</p>
+                <br></br>
               </div>
             ))
           ) : (

@@ -30,7 +30,7 @@ body {
 /* //MainPage-Style */
 .main-heading {
   background-color: #101010;
-  padding: 14px;
+  padding: 50px;
   color: #F3F5F7;
   text-align: center;
   font-weight: bold;
@@ -130,6 +130,7 @@ body {
 .main-post-text {
   text-align: left;
   margin-left: 10px;
+  margin-top: 1px;
   color: #F3F5F7;
 }
 
@@ -144,6 +145,9 @@ body {
 
 .main-profile-name {
   color: #F3F5F7;
+  font-weight: bold;
+  margin-left: 0px;
+  margin-top: -1px;
   font-size: 15px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -233,8 +237,8 @@ body {
 }
 
 .search-post-text {
-  margin: 10px 0;
-  font-size: 15px;
+  margin-top: 29px;
+  margin-left: 4px;
   line-height: 1.5;
   color: #F3F5F7;
   font-weight: bold;
@@ -243,6 +247,8 @@ body {
 
 .search-profile-name {
   font-size: 15px;
+  margin-left: 6px;
+  margin-top: 2px;
   font-weight: bold;
   color: #777777;
 }
@@ -254,8 +260,15 @@ body {
   padding: 6px 24px;
   border-radius: 10px;
   cursor: pointer;
+  margin-right: 20px;
 }
-
+.search-followers{
+  font-size: 15px;
+  font-weight: lighter;
+  color: #F3F5F7;
+  margin-top: 9px;
+  margin-left: 6px;
+}
 .search-suggestions {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #777777;
@@ -292,10 +305,11 @@ body {
 }
 
 .comment-post-image {
-  width: 25%;
+  width: 50%;
   object-fit: cover;
   border-radius: 8px;
   margin-left: 50px;
+  margin-top: -180px;
 }
 
 .comment-post-image-container {
@@ -333,11 +347,22 @@ body {
   align-items: center;
   padding-bottom: 10px;
   margin-bottom: 20px;
+}
 
-  /* h3 {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #333; */
+h1 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #F3F5F7;
+  margin-top: -50px;
+  margin-left: 50px;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: lighter;
+  color: #F3F5F7;
+  margin-top: 6px;
+  margin-left: 50px;
 }
 
 .comment-close-btn {
@@ -358,7 +383,24 @@ body {
   display: inline-block;
   width: 2px;
   height: 200px;
-  background-color: #f6f1f1;
+  background-color: #333638;
+  margin-left: 20px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #F3F5F7;
+  margin-top: -40px;
+  margin-left: 50px;
+}
+
+p {
+  font-size: 15px;
+  font-weight: lighter;
+  color: #F3F5F7;
+  margin-top: 10px;
+  margin-left: 50px;
 }
 
 .comment-body {
@@ -368,8 +410,7 @@ body {
   border-radius: 10px;
   outline: none;
   font-size: 1rem;
-  color: #F3F5F7
-  ;
+  color: #F3F5F7;
   background-color: #181818;
   resize: none;
   margin-bottom: 20px;
@@ -395,6 +436,21 @@ body {
 
 }
 
+button.Comment-replyButton {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  /* background-color: red; */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: -40px;
+  margin-left: -210px;
+  color: #fff;
+}
+
 .Comment-replyButton {
   display: flex;
   gap: 5px;
@@ -412,7 +468,6 @@ body {
   gap: 5px;
   align-items: center;
   justify-content: center;
-  /* background-color: transparent; */
   background-color: red;
   border: none;
   cursor: pointer;
@@ -423,4 +478,17 @@ body {
 
 .comment-user {
   margin-top: -3px;
+}
+
+.comment-like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  margin-left: -250px;
+  color: #fff;
+  margin-bottom: -9px;
 }

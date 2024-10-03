@@ -8,6 +8,7 @@ import ProfileImage from '@/components/ProfileImage/page';
 import Comment from '@/components/Comment/Comment';
 import LikeButton from '@/components/Like/like';
 import CommentButton from "@/components/CommentButton/CommentButton"
+import { CiHeart } from "react-icons/ci";
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -115,8 +116,9 @@ const Page = () => {
                         likedUsers={post.likes}
                       ></LikeButton>
                     ):(
-                      <p>Please Log In</p>
+                      <CiHeart className='comment-like-button' style={{ fontSize: '26px'}}/>
                     )}
+                    <br></br>
                     <div className='main-reply' onClick={()=>{
                       openComment();
                       setPostId(post._id)
