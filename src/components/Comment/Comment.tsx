@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ReactNode, useEffect, useState } from "react";
 import ProfileImage from "../ProfileImage/page";
 import { axiosInstance } from "@/Axios/axios";
@@ -25,6 +24,7 @@ const Comment: React.FC<CommentProps> = ({
   const [post, setPost] = useState<any>(null);
   const [comment, setComment] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (isOpen) {
       const fetchPost = async () => {
@@ -33,7 +33,7 @@ const Comment: React.FC<CommentProps> = ({
             `api/posts/post/${postId}`
           );
           setPost(response.data.post);
-          console.log("This is a Post", response.data.post);
+          console.log("This is a Post",post);
         } catch (error) {
           console.log("Failed to Fetch Post", error);
         }
@@ -52,7 +52,7 @@ const Comment: React.FC<CommentProps> = ({
     };
     try {
       setLoading(true);
-      const response = await axiosInstance.post(
+          const response = await axiosInstance.post(
         `api/posts/${postId}/reply`,
         reply
       ); 
@@ -123,7 +123,7 @@ const Comment: React.FC<CommentProps> = ({
         </div>
         <div className="comment-repliesContainer">
           {post?.replies?.length > 0 ? (
-            post.replies.map((reply: any, index: number) => (
+            [...post.replies].map((reply: any, index: number) => (
               <div key={index} className="comment.reply">
                 <div className="comment-reply-user-info">
                   <ProfileImage profilePic={reply.userProfilePic

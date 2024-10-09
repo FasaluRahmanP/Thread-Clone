@@ -262,13 +262,15 @@ body {
   cursor: pointer;
   margin-right: 20px;
 }
-.search-followers{
+
+.search-followers {
   font-size: 15px;
   font-weight: lighter;
   color: #F3F5F7;
   margin-top: 9px;
   margin-left: 6px;
 }
+
 .search-suggestions {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #777777;
@@ -492,3 +494,359 @@ button.Comment-replyButton {
   color: #fff;
   margin-bottom: -9px;
 }
+
+/* //Thread-modal */
+
+.thread-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.thread-modal {
+  background-color: #181818;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.thread-closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.thread-content {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.thread-closeButton:hover {
+  color: #ff5a5f;
+}
+
+.thread-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px
+}
+
+.thread-textarea {
+  outline: none;
+  background-color: #181818;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  font-size: 16px;
+  transition: border-color .3s ease, box-shadow .3s ease;
+  resize: none;
+  color: #F3F5F7;
+}
+
+.thread-textarea::-moz-placeholder {
+  color: #aaa;
+  font-size: 14px
+}
+
+.thread-textarea::placeholder {
+  color: #aaa;
+  font-size: 14px
+}
+
+/* //Postbutton-style */
+
+.postbutton-postBtn {
+  height: 40px;
+  margin-top: 15px;
+  padding: 0px 16px;
+  border: 1px solid #383939;
+  background-color: #181818;
+  color: #F3F5F7;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  outline: none;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  &:active {
+    background-color: #2b2b2b;
+  }
+}
+
+.thread-dp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.thread-profile-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.thread-profile-name {
+  color: #fff;
+  font-size: 50px;
+}
+
+.thread-image-preview {
+  width: 30%;
+  height: 30%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 8px;
+  align-self: flex-start
+}
+
+.thread-file-upload-container {
+  position: relative;
+  display: inline-block
+}
+
+.thread-file-input {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: 100%;
+  cursor: pointer
+}
+
+.thread-file-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 35px;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* style */
+
+/* .post-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0px 24px;
+  align-items: center;
+  width: 100%
+} */
+
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: static
+}
+
+.navbar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center
+}
+
+.main {
+  width: 640px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+  text-align: center;
+  border-radius: 16px
+}
+
+.heading {
+  z-index: 5;
+  background-color: #0a0a0a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  position: fixed;
+  width: 640px;
+  height: 70px;
+  padding: 10px;
+  border-bottom: 1px solid #383939
+}
+
+.posts-container {
+  background-color: #181818;
+  padding-top: 100px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #383939
+}
+
+.new-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 24px;
+  border-bottom: 1px solid #383939
+}
+
+.dp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 10px
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%
+}
+
+.new {
+  color: dimgray;
+  padding: 12px 24px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px
+}
+
+.past-btn {
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color .3s, color .3s
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.post-item {
+  background-color: #fff;
+  color: #333;
+  padding: 15px;
+  border-bottom: 1px solid #383939
+}
+
+.post-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0)
+}
+
+.post-image {
+  width: 50%;
+  height: 50%;
+  margin-left: 50px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 8px;
+  align-self: flex-start
+}
+
+.time {
+  color: #666;
+  align-self: flex-end
+}
+
+.post-user {
+  display: flex;
+  width: 100%
+}
+
+.profile-name:hover {
+  text-decoration: underline
+}
+
+.profile-name {
+  color: #fff;
+  font-size: 20px
+}
+
+.user-name_time {
+  margin-left: 10px;
+  display: flex;
+  gap: 10px
+}
+
+.post-text {
+  text-align: left;
+  margin-left: 10px
+}
+
+.post-thread {
+  display: flex;
+  justify-content: end
+} */

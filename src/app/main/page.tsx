@@ -8,7 +8,9 @@ import ProfileImage from '@/components/ProfileImage/page';
 import Comment from '@/components/Comment/Comment';
 import LikeButton from '@/components/Like/like';
 import CommentButton from "@/components/CommentButton/CommentButton"
+import Threads from "@/components/Thread/thread"
 import { CiHeart } from "react-icons/ci";
+import PostBtn from '@/components/PostButton/postbutton';
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +22,10 @@ const Page = () => {
   const [userProfilePic, setProfilePic] = useState<string>('');
   const [username, setUserName] = useState<string>('');
   const [postId, setPostId] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const openComment = () => setIsCommentOpen(true);
   const closeComment = () => setIsCommentOpen(false);
 
@@ -53,6 +58,18 @@ const Page = () => {
 
   return (
     <>
+    <Threads isOpen={isModalOpen} onClose={closeModal}>
+                <div className="thread-dp">
+                    <img
+                        src={currentUser?.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                        alt="profile"
+                        className="thread-profile-image"
+                    />
+                    <p className="thread-profile-name">{username}</p>
+                </div>
+
+            </Threads>
+    
       <Comment
         isOpen={isCommentOpen}
         onClose={closeComment}
@@ -87,7 +104,8 @@ const Page = () => {
                   <span>What's new?</span>
                 </div>
               </div>
-              <button className='main-post-button'>Post</button>
+              {/* <button className='main-post-button'>Post</button> */}
+              <PostBtn onClick={openModal}></PostBtn>
             </div>
 
             <div className='main-post-list'>
