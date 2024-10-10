@@ -13,8 +13,8 @@ const Sidebar = () => {
     setDropdownOpen(prev => !prev);
   };
   return (
-    <nav className='bg-[0a0a0a] h-full w-20 fixed'>
-      <div className='flex flex-col items-center h-full py-4'>
+    <nav className='bg-[0a0a0a] h-full w-20 fixed z-50'>
+      <div className='flex flex-col items-center h-full py-4 '>
         <div className='flex mb-10'>
           <Image
             src={logo}
