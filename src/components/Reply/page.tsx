@@ -1,8 +1,10 @@
-import { ReactNode, useEffect, useState } from "react";
-import ProfileImage from "../ProfileImage/page";
-import { axiosInstance } from "@/Axios/axios";
+'use client';
+import React, { useEffect, useState, ReactNode } from 'react';
+import axios from 'axios';
+import ProfileImage from '../ProfileImage/page';
+import { axiosInstance } from '@/Axios/axios';
 
-interface CommentProps {
+interface ReplyProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
@@ -12,50 +14,46 @@ interface CommentProps {
   username: string;
 }
 
-const Comment: React.FC<CommentProps> = ({
-  isOpen,
-  onClose,
-  children,
-  postId,
-  userId,
-  userProfilePic,
-  username,
-}) => {
+const Reply: React.FC<ReplyProps> = ({ isOpen, onClose, children, postId, userId, userProfilePic, username }) => {
   const [post, setPost] = useState<any>(null);
-  const [comment, setComment] = useState<string>("");
+  const [comment, setComment] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (isOpen) {
       const fetchPost = async () => {
-           try {
+        try {
           const response = await axiosInstance.get(
             `api/posts/post/${postId}`
           );
           setPost(response.data.post);
-          console.log("This is a Post",post);
+          console.log('this is a post', post)
         } catch (error) {
-          console.log("Failed to Fetch Post", error);
+          console.error("Failed to fetch post:", error);
         }
       };
       fetchPost();
     }
   }, [isOpen, postId]);
 
-  const handleCommentSubmit = async () => {
+
+  const handleReplySubmit = async () => {
     if (!comment.trim()) return;
+
     const reply = {
       text: comment,
       userId: userId,
       username: username,
-      userProfilePic: userProfilePic,
+      userProfilePic: userProfilePic
     };
+
     try {
       setLoading(true);
-          const response = await axiosInstance.post(
-        `api/posts/${postId}/reply`,
+      const response = await axios.post(
+        `https://social-media-rest-apis.onrender.com/api/posts/${postId}/reply`,
         reply
-      ); 
+      );
+
       setComment('');
     } catch (error) {
       console.error("Failed to reply to post:", error);
@@ -63,7 +61,9 @@ const Comment: React.FC<CommentProps> = ({
       setLoading(false);
     }
   };
- 
+
+
+
   if (!isOpen) return null;
 
   return (
@@ -117,7 +117,7 @@ const Comment: React.FC<CommentProps> = ({
           />
         </div>
         <div className="comment.footer">
-          <button onClick={handleCommentSubmit} disabled={loading} className="comment-submit-btn">
+          <button onClick={handleReplySubmit} disabled={loading} className="comment-submit-btn">
             {loading ? "Posting..." : "Post"}
           </button>
         </div>
@@ -146,4 +146,5 @@ const Comment: React.FC<CommentProps> = ({
     </div>
   )
 }
-export default Comment;
+export default Reply;
+

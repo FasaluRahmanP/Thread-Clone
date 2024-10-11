@@ -5,12 +5,12 @@ import { fetchPosts } from '../Store/Reducer/PostSlice';
 import { fetchuser } from '../Store/Reducer/UserSlice';
 import TimeAgo from '@/components/TimeAgo/page';
 import ProfileImage from '@/components/ProfileImage/page';
-import Comment from '@/components/Comment/Comment';
+import Reply from '@/components/Reply/page';
 import LikeButton from '@/components/Like/like';
-import CommentButton from "@/components/CommentButton/CommentButton"
 import Threads from "@/components/Thread/thread"
 import { CiHeart } from "react-icons/ci";
 import PostBtn from '@/components/PostButton/postbutton';
+import ReplyButton from '@/components/ReplyButton/page';
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -70,7 +70,7 @@ const Page = () => {
 
             </Threads>
     
-      <Comment
+      <Reply
         isOpen={isCommentOpen}
         onClose={closeComment}
         postId={postId}
@@ -86,7 +86,7 @@ const Page = () => {
             <p className='main-profile-name'>{username}</p>
           </div>
         </div>
-      </Comment>
+      </Reply>
       <nav className='main-nav'><h1 className='main-heading'>For you</h1></nav>
       <div className="flex items-center justify-center h-screen">
         <div className="h-full w-6/12 bg-[#201d1d] rounded-3xl">
@@ -135,13 +135,14 @@ const Page = () => {
                       ></LikeButton>
                     ):(
                       <CiHeart className='comment-like-button' style={{ fontSize: '26px'}}/>
+                      // <p>login</p>
                     )}
                     <br></br>
                     <div className='main-reply' onClick={()=>{
                       openComment();
                       setPostId(post._id)
                     }}>
-                      <CommentButton CommentCount={post.replies.length}></CommentButton>
+                      <ReplyButton CommentCount={post.replies.length}></ReplyButton>
                     </div>
                   </div>
                 </div>
