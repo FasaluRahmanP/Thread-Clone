@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../Hooks/useAppDispatch';
 import { fetchPosts } from '../Store/Reducer/PostSlice';
 import { fetchuser } from '../Store/Reducer/UserSlice';
@@ -37,12 +37,13 @@ const Page = () => {
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     if (userId && users.length > 0) {
-        const user = users.find((user) => user.id === userId);
+        const user = users.find((user) => user._id === userId);
         if (user) {
             setCurrentUser(user);
             setUserName(user.username || '');
         }
     }
+    console.log(userId)
 }, [users]);
 
   useEffect(() => {
@@ -55,6 +56,7 @@ const Page = () => {
       }
     }
   }, [currentUser]);
+  // console.log('this',userId);
 
   return (
     <>
@@ -134,7 +136,7 @@ const Page = () => {
                         likedUsers={post.likes}
                       ></LikeButton>
                     ):(
-                      <CiHeart className='comment-like-button' style={{ fontSize: '26px'}}/>
+                      <CiHeart className='comment-likeButton' style={{ fontSize:"30px"}}/>
                       // <p>login</p>
                     )}
                     <br></br>

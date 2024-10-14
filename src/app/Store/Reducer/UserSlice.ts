@@ -6,7 +6,7 @@ export const fetchuser=createAsyncThunk("user/fetchuser",async()=>{
     return response.data.users
 })
 interface user{
-    id:string,
+    _id:string,
     name:string,
     email:string,
     username:string,
