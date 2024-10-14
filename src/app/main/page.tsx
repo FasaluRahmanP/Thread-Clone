@@ -11,6 +11,8 @@ import Threads from "@/components/Thread/thread"
 import { CiHeart } from "react-icons/ci";
 import PostBtn from '@/components/PostButton/postbutton';
 import ReplyButton from '@/components/ReplyButton/page';
+import RepostButton from '@/components/RepostButton/RepostButton';
+import Repost from '@/components/Repost/repost';
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -23,11 +25,14 @@ const Page = () => {
   const [username, setUserName] = useState<string>('');
   const [postId, setPostId] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRepostOpen, setIsRepostOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const openComment = () => setIsCommentOpen(true);
   const closeComment = () => setIsCommentOpen(false);
+  const openRepost = () => setIsRepostOpen(true);
+  const closeRepost = () => setIsRepostOpen(false);
 
   useEffect(() => {
     dispatch(fetchuser())
@@ -37,14 +42,14 @@ const Page = () => {
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     if (userId && users.length > 0) {
-        const user = users.find((user) => user._id === userId);
-        if (user) {
-            setCurrentUser(user);
-            setUserName(user.username || '');
-        }
+      const user = users.find((user) => user._id === userId);
+      if (user) {
+        setCurrentUser(user);
+        setUserName(user.username || '');
+      }
     }
     console.log(userId)
-}, [users]);
+  }, [users]);
 
   useEffect(() => {
     if (currentUser) {
@@ -60,18 +65,18 @@ const Page = () => {
 
   return (
     <>
-    <Threads isOpen={isModalOpen} onClose={closeModal}>
-                <div className="thread-dp">
-                    <img
-                        src={currentUser?.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
-                        alt="profile"
-                        className="thread-profile-image"
-                    />
-                    <p className="thread-profile-name">{username}</p>
-                </div>
+      <Threads isOpen={isModalOpen} onClose={closeModal}>
+        <div className="thread-dp">
+          <img
+            src={currentUser?.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+            alt="profile"
+            className="thread-profile-image"
+          />
+          <p className="thread-profile-name">{username}</p>
+        </div>
 
-            </Threads>
-    
+      </Threads>
+
       <Reply
         isOpen={isCommentOpen}
         onClose={closeComment}
@@ -135,17 +140,28 @@ const Page = () => {
                         userId={currentUser._id}
                         likedUsers={post.likes}
                       ></LikeButton>
-                    ):(
-                      <CiHeart className='comment-likeButton' style={{ fontSize:"30px"}}/>
+                    ) : (
+                      <CiHeart className='comment-likeButton' style={{ fontSize: "30px" }} />
                       // <p>login</p>
                     )}
                     <br></br>
-                    <div className='main-reply' onClick={()=>{
+                    <div className='main-reply' onClick={() => {
                       openComment();
                       setPostId(post._id)
                     }}>
                       <ReplyButton CommentCount={post.replies.length}></ReplyButton>
                     </div>
+                    <div onClick={() => { setPostId(post._id); openRepost() }}>
+                      <RepostButton repostCount={post.reposts.length} />
+                    </div>
+                    <Repost
+                    isOpen={isRepostOpen}
+                    onClose={closeRepost}
+                    postId={postId}
+                    userId={userId}
+                    userProfilePic={userProfilePic}
+                    username={username}
+                    ></Repost>
                   </div>
                 </div>
               ))}

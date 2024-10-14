@@ -16,6 +16,7 @@ interface Post {
     likes: string[];
     replies: string[];
     createdOn: string;
+    reposts:string[]
 
 }
 interface PostState {

@@ -458,7 +458,7 @@ button.Comment-replyButton {
   cursor: pointer;
   padding: 0;
   margin-top: -40px;
-  margin-left: -210px;
+  margin-left: -180px;
   color: #fff;
 }
 
@@ -729,10 +729,27 @@ button.Comment-replyButton {
 }
 
 .repost-cancelbutton {
-  background-color: #ccc;
+  background-color: #F3F5F7;
+  color: black;
 }
 
 .repost-repostbutton {
-  background-color: #007bff;
-  color: white;
+  background-color: #F3F5F7;
+  color: black;
+}
+
+.repostbtn-repostButton {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  margin-left: -120px;
+  margin-top: -23px;
+
 }
