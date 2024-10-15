@@ -5,12 +5,18 @@ import Image from 'next/image';
 import StyledButton from '../../app/Ui/StyledSide'
 import { CgDetailsMore } from "react-icons/cg";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Sidebar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const router = useRouter();  
 
   const toggleDropdown = () => {
     setDropdownOpen(prev => !prev);
+  };
+  const HandleLogout = () => {
+    localStorage.clear();
+    router.push('/Login');
   };
   return (
     <nav className='bg-[0a0a0a] h-full w-20 fixed z-50'>
@@ -42,12 +48,12 @@ const Sidebar = () => {
           </Link>
 
           <Link href={"/main/AddPost"}>
-          <StyledButton ariaLabel="Create">
-            <svg aria-label="Create" width="24" height="24" viewBox="0 0 23 24" fill="transparent" xmlns="http://www.w3.org/2000/svg">
-              <title>Create</title>
-              <path d="M11.5 2.25H7.75C4.43629 2.25 1.75 4.93629 1.75 8.25V15.75C1.75 19.0637 4.43629 21.75 7.75 21.75H15.25C18.5637 21.75 21.25 19.0637 21.25 15.75V12M11.981 11.4534L20.396 3.03838" stroke="grey" strokeWidth="2.5" strokeLinecap="round" />
-            </svg>
-          </StyledButton>
+            <StyledButton ariaLabel="Create">
+              <svg aria-label="Create" width="24" height="24" viewBox="0 0 23 24" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+                <title>Create</title>
+                <path d="M11.5 2.25H7.75C4.43629 2.25 1.75 4.93629 1.75 8.25V15.75C1.75 19.0637 4.43629 21.75 7.75 21.75H15.25C18.5637 21.75 21.25 19.0637 21.25 15.75V12M11.981 11.4534L20.396 3.03838" stroke="grey" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+            </StyledButton>
           </Link>
 
           <Link href={"/main/Activity"}>
@@ -88,7 +94,7 @@ const Sidebar = () => {
             <button className="cursor-pointer py-3 w-full text-left rounded-2xl">Insight</button>
             <button className="cursor-pointer py-3 w-full text-left rounded-2xl">Settings</button>
             <button className="cursor-pointer py-3 w-full text-left rounded-2xl">Report a problem</button>
-            <button className="cursor-pointer py-3 w-full text-left rounded-2xl">Log out</button>
+            <button className="cursor-pointer py-3 w-full text-left rounded-2xl" onClick={HandleLogout}>Log out</button>
           </div>
         )}
 
