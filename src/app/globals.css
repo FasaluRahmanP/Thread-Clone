@@ -752,3 +752,31 @@ button.Comment-replyButton {
   margin-top: -23px;
 
 }
+
+/* profile-style */
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile-item{
+  background-color: #F3F5F7;
+  color: #333;
+  padding: 15px; 
+  border-bottom: 1px solid #383939;
+}
+.profile-user{
+  display: flex;
+  width: 100%;
+}
+.profile-image{
+  width: 50%;
+  height: 50%;
+  margin-left: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  align-self: flex-start;
+}
+.profile-menu-container{
+  position:relative
+}
