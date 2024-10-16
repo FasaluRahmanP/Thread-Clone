@@ -17,7 +17,7 @@ interface Post {
     _id: string
     text: string
     postById: User
-    image?: string[]
+    image?: string
     likes: string[]
     replies: Reply[]
     createdOn: string

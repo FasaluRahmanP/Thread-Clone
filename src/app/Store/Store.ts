@@ -3,7 +3,7 @@ import SignupSlice from "./Reducer/SignUpSlice";
 import UserSlice from "./Reducer/UserSlice"
 import PostSlice from "./Reducer/PostSlice";
 import LoginSlice from "./Reducer/LoginSlice";
-import NewPostSlice from "./Reducer/NewPostSlice"
+// import NewPostSlice from "./Reducer/NewPostSlice"
 
  export const store=configureStore({
     reducer:{
@@ -11,7 +11,7 @@ import NewPostSlice from "./Reducer/NewPostSlice"
         users:UserSlice,
         posts:PostSlice,
         Login:LoginSlice,
-        NewPost:NewPostSlice
+        // NewPost:NewPostSlice
     }
 })
 
