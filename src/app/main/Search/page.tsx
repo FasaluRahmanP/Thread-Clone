@@ -44,7 +44,7 @@ const Page = () => {
           <div className='search-result'>
             {filteredUsers.length > 0 ? (
               [...filteredUsers].map(user => (
-                <div key={user.id} className="search-result-item">
+                <div key={user._id} className="search-result-item">
                   <div className='search-post-user'>
                     {user.profilePic ? (
                       <img

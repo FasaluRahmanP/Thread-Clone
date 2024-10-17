@@ -759,17 +759,20 @@ button.Comment-replyButton {
   flex-direction: column;
   gap: 10px;
 }
-.profile-item{
+
+.profile-item {
   background-color: #F3F5F7;
   color: #333;
-  padding: 15px; 
+  padding: 15px;
   border-bottom: 1px solid #383939;
 }
-.profile-user{
+
+.profile-user {
   display: flex;
   width: 100%;
 }
-.profile-image{
+
+.profile-image {
   width: 50%;
   height: 50%;
   margin-left: 50px;
@@ -777,6 +780,81 @@ button.Comment-replyButton {
   border-radius: 8px;
   align-self: flex-start;
 }
-.profile-menu-container{
-  position:relative
+
+.profile-menu-container {
+  position: relative
+}
+
+/* activity-style */
+.activity-profilepic {
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+  object-fit: cover;
+}
+
+.activity-notification {
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #383939;
+}
+
+.activity-senderinfo {
+  display: flex;
+  width: 100%;
+}
+
+.activity-ProfilePicContainer {
+  padding: 12px 0px 12px 24px;
+
+}
+
+.activity-sendername {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20px;
+  gap: 5px;
+
+}
+
+.activity-profilepic {
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+  -o-object-fit: cover;
+  object-fit: cover
+}
+
+.activity-notification {
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #383939
+}
+
+.activity-senderinfo {
+  display: flex;
+  width: 100%
+}
+
+.activity-senderinfo .activity-ProfilePicContainer {
+  padding: 12px 0px 12px 24px
+}
+
+.activity-senderinfo .activity-sendername {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20px;
+  gap: 5px
 }
