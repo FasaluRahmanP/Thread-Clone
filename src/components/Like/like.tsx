@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa6";
 
 interface LikeButtonProps {
     initialLike: number
@@ -46,8 +46,8 @@ const LikeButton = ({ initialLike, postId, userId, likedUsers }: LikeButtonProps
 
     return (
         <button onClick={handleLike} className="comment-likeButton">
-            <CiHeart fill={isLiked ? 'red' : 'white'} style={{ fontSize: '23px'}} />
-            <span>{like}</span>
+            <FaHeart color={isLiked ? '#FF0034' :"white"}className='comment-like-icon' />
+            <span style={{marginLeft:"6px"}}>{like}</span>
         </button>
     )
 }

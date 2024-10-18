@@ -8,7 +8,7 @@ import ProfileImage from '@/components/ProfileImage/page';
 import Reply from '@/components/Reply/page';
 import LikeButton from '@/components/Like/like';
 import Threads from "@/components/Thread/thread"
-import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa6";
 import PostBtn from '@/components/PostButton/postbutton';
 import ReplyButton from '@/components/ReplyButton/page';
 import RepostButton from '@/components/RepostButton/RepostButton';
@@ -141,7 +141,7 @@ const Page = () => {
                         likedUsers={post.likes}
                       ></LikeButton>
                     ) : (
-                      <CiHeart className='comment-likeButton' style={{ fontSize: "30px" }} />
+                      <FaHeart className='comment-likeButton' style={{ fontSize: "20px" }} />
                       // <p>login</p>
                     )}
                     <br></br>

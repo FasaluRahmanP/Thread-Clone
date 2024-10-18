@@ -512,7 +512,9 @@ button.Comment-replyButton {
   color: #fff;
   margin-bottom: -9px;
 }
-
+.comment-like-icon{
+  font-size: 20px;
+}
 /* //Thread-modal */
 
 .thread-overlay {
