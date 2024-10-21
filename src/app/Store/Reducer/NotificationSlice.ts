@@ -6,57 +6,62 @@ interface User {
     name: string
     username: string
     email: string
-    profilePic: string
+    profilePic: string | any
+    notification: any;
 }
 interface Notification {
     id: string
     description: string
-    senderuserId: User
+    senderUserId: User
 }
 interface NotificationState {
-    notification: Notification[]
+    notifications: Notification[]
     status: "Idle" | "Loading" | "Succeeded" | "Failed"
     error: string | null
 }
 const initialState: NotificationState = {
-    notification: [],
+    notifications: [],
     status: "Idle",
     error: null
 
 }
-export const fetchNotification=createAsyncThunk(
+export const fetchNotification = createAsyncThunk(
     "fetch/fetchNotification",
-    async()=>{
-        try{
-            const userId=localStorage.getItem("userId")
-            if(userId){
-                const response=await axiosInstance.get(`api/users/notification/${userId}`)
-                console.log(response)
-                return response.data.notification
+    async () => {
+        try {
+            const userId = localStorage.getItem("userId")
+            if (userId) {
+                const response = await axiosInstance.get(`api/users/notification/${userId}`)
+                // console.log(response.data)
+                return response.data.notifications
             }
-        }catch(error){
-            console.log("Error",error)
+            throw new Error('User ID not found in localstorsge');
+        } catch (error: any) {
+            console.log("Error", error)
+            throw error.response?.data?.message || error.message;
+
         }
     }
 )
-export const NotificationSlice=createSlice({
-    name:"notification",
+export const NotificationSlice = createSlice({
+    name: "notifications",
     initialState,
-    reducers:{},
-    extraReducers:(builder)=>{
+    reducers: {},
+    extraReducers: (builder) => {
         builder
-        .addCase(fetchNotification.pending,(state)=>{
-            state.status="Loading"
-            state.error=null
-        })
-        .addCase(fetchNotification.fulfilled,(state,action)=>{
-            state.status="Succeeded"
-            state.notification=action.payload
-        })
-        .addCase(fetchNotification.rejected,(state,action)=>{
-            state.status="Failed"
-            state.error=action.error.message||"Failed to get Notification"
-        })
+            .addCase(fetchNotification.pending, (state) => {
+                state.status = "Loading"
+                state.error = null
+            })
+            .addCase(fetchNotification.fulfilled, (state, action) => {
+                console.log(action)
+                state.status = "Succeeded";
+                state.notifications = action.payload;
+            })
+            .addCase(fetchNotification.rejected, (state, action) => {
+                state.status = "Failed"
+                state.error = action.error.message || "Failed to get Notification"
+            })
     }
 })
 export default NotificationSlice.reducer

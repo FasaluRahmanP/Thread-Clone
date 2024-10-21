@@ -12,7 +12,7 @@ import NotificationSlice from "./Reducer/NotificationSlice";
         users:UserSlice,
         posts:PostSlice,
         Login:LoginSlice,
-        Notification:NotificationSlice
+        NotificationSL  :NotificationSlice
         // NewPost:NewPostSlice
     }
 })
