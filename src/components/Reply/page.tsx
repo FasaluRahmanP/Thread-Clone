@@ -3,7 +3,7 @@ import React, { useEffect, useState, ReactNode } from 'react';
 import axios from 'axios';
 import ProfileImage from '../ProfileImage/page';
 import { axiosInstance } from '@/Axios/axios';
-
+import style from "./style.module.css"
 interface ReplyProps {
   isOpen: boolean;
   onClose: () => void;
@@ -67,83 +67,83 @@ const Reply: React.FC<ReplyProps> = ({ isOpen, onClose, children, postId, userId
   if (!isOpen) return null;
 
   return (
-    <div className='comment-overlay'>
-      <div className='comment-modal'>
+    <div className={style['comment-overlay']}>
+      <div className={style['comment-modal']}>
 
-        <button className='comment-close-btn' onClick={onClose}>
+        <button className={style['comment-close-btn']} onClick={onClose}>
           &times;
         </button>
 
         {post && (
-          <div className="comment-post-content">
-            <div className="comment-user-info">
+          <div className={style["comment-post-content"]}>
+            <div className={style["comment-user-info"]}>
               {post.postById.profilePic ? (
                 <img
                   src={post.postById.profilePic}
                   alt={`${post.postById.username}'s profile`}
-                  className="comment-profile-image"
+                  className={style["comment-profile-image"]}
                 />
               ) : (
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                   alt="default profile"
-                  className="comment-profile-image"
+                  className={style["comment-profile-image"]}
                 />
               )}
             </div>
             <div>
-              <h1>{post.postById.username}</h1>
-              <h2>{post.text}</h2>
+              <h1 className='h1'>{post.postById.username}</h1>
+              <h2 className='h2'>{post.text}</h2>
             </div>
-            <div className="comment-the-line"></div>
+            <div className={style["comment-the-line"]}></div>
             {post.image && (
-              <div className="comment-post-image-container">
+              <div className={style["comment-post-image-container"]}>
                 <img
                   src={post.image}
                   alt="Post"
-                  className="comment-post-image"
+                  className={style["comment-post-image"]}
                 />
               </div>
             )}
           </div>
         )}
-        <div className="comment-user">{children}</div>
-        <div className="comment-body">
+        <div className={style["comment-user"]}>{children}</div>
+        <div className={style["comment-body"]}>
           <textarea
-            className="comment-body"
+            className={style["comment-body"]}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Reply to..."
           />
         </div>
-        <div className="comment.footer">
-          <button onClick={handleReplySubmit} disabled={loading} className="comment-submit-btn">
-            {loading ? "Posting..." : "Post"}
-          </button>
-        </div>
-        <div className="comment-repliesContainer">
-          {post?.replies?.length > 0 ? (
-            [...post.replies].map((reply: any, index: number) => (
-              <div key={index} className="comment.reply">
-                <div className="comment-reply-user-info">
-                  <ProfileImage profilePic={reply.userProfilePic
-                  }
-                    altText={reply.username}
-                    className="comment-profile-image"
-                  />
-                  <h4>{reply.username}</h4>
-                </div>
-                <p>{reply.text}</p>
-                <br></br>
-              </div>
-            ))
-          ) : (
-            <p>No replies yet.</p>
-          )}
-        </div>
-
+        <div className={style["comment.footer"]}>
+        <button onClick={handleReplySubmit} disabled={loading} className={style["comment-submit-btn"]}>
+          {loading ? "Posting..." : "Post"}
+        </button>
       </div>
+      <div className={style["comment-repliesContainer"]}>
+        {post?.replies?.length > 0 ? (
+          [...post.replies].map((reply: any, index: number) => (
+            <div key={index} className={style["comment.reply"]}>
+              <div className={style["comment-reply-user-info"]}>
+                <ProfileImage profilePic={reply.userProfilePic
+                }
+                  altText={reply.username}
+                  className={style["comment-profile-image"]}
+                />
+                <h4 className='h4'>{reply.username}</h4>
+              </div>
+              <p className='p'>{reply.text}</p>
+              <br></br>
+            </div>
+          ))
+        ) : (
+          <p>No replies yet.</p>
+        )}
+      </div>
+
     </div>
+    </div >
   )
 }
 export default Reply;

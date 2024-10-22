@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/app/Hooks/useAppDispatch';
 import { fetchuser } from '@/app/Store/Reducer/UserSlice';
 import ProfileImage from '@/components/ProfileImage/page';
 import EditProfile from '../EditProfile/page';
+import style from "./style.module.css"
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -46,47 +47,47 @@ const Profile = () => {
 
   return (
     <>
-      <nav className='main-nav'><h1 className='main-heading'>For you</h1></nav>
+      <nav className={style['main-nav']}><h1 className={style['main-heading']}>For you</h1></nav>
       <div className="flex items-center justify-center h-screen">
         <div className="h-full w-6/12 bg-[#181818] rounded-3xl">
           <EditProfile isOpen={isEditModalOpen} onClose={handleEditProfileClose} />
-          <div className="profile-container">
-            <div className="profile-details">
+          <div className={style["profile-container"]}>
+            <div className={style["profile-details"]}>
 
-              <h1 className='profile-name'>{name}</h1>
-              <span className='profile-username'>{username}</span>
+              <h1 className={style['profile-name']}>{name}</h1>
+              <span className={style['profile-username']}>{username}</span>
 
-              <p className="profile-discrption">
+              <p className={style["profile-discrption"]}>
                 {userBio}
               </p>
-              <p className='profile-followers'>{followers.length} followers</p>
+              <p className={style['profile-followers']}>{followers.length} followers</p>
 
             </div>
 
-            <div className="profile-image">
+            <div className={style["profile-image"]}>
               <ProfileImage
                 altText="Profile"
                 profilePic={profilePic}
-                className="profile-img"
+                className={style["profile-img"]}
               />
             </div>
-            <div className="edit-profile">
+            <div className={style["edit-profile"]}>
               <div
-                className="edit-button"
+                className={style["edit-button"]}
                 onClick={handleEditProfileOpen}
               >
                 Edit profile
               </div>
             </div>
 
-            <div className="profile-state">
-              <div className="profile-statediv">
+            <div className={style["profile-state"]}>
+              <div className={style["profile-statediv"]}>
                 <Link href={'/main/Profile'}>Threads</Link>
               </div>
-              <div className="profile-statediv">
+              <div className={style["profile-statediv"]}>
                 <Link href={'/main/Profile/replies'}>Replies</Link>
               </div>
-              <div className="profile-statediv">
+              <div className={style["profile-statediv"]}>
                 <Link href={'/main/Profile/reposts'}>Reposts</Link>
               </div>
             </div>

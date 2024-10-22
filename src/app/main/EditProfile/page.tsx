@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './editProfile.module.scss';
 import { BsPersonFillAdd } from 'react-icons/bs';
-
+import style from "./style.module.css"
 import { useRouter } from 'next/navigation';
 import { axiosInstance } from '@/Axios/axios';
 
@@ -82,14 +82,14 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="EP-overlay">
-            <div className="EP-container">
-                <button onClick={onClose} className="EP-close-btn">
+        <div className={style["EP-overlay"]}>
+            <div className={style["EP-container"]}>
+                <button onClick={onClose} className={style["EP-close-btn"]}>
                     ✕
                 </button>
 
-                <form className="EP-form" onSubmit={handleSubmit}>
-                    <div className="EP-form-group">
+                <form className={style["EP-form"]} onSubmit={handleSubmit}>
+                    <div className={style["EP-form-group"]}>
                         <label htmlFor="name">Name</label>
                         <input
                             type="text"
@@ -98,7 +98,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                             onChange={(e) => setName(e.target.value)}
                         />
 
-                        <div className="EP-profile-pic-container">
+                        <div className={style["EP-profile-pic-container"]}>
                             <button onClick={handleImageUpload}>
                                 <BsPersonFillAdd size={24} />
                             </button>
@@ -109,14 +109,14 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                                 style={{ display: 'none' }}
                             />
                             {previewImage && (
-                                <div className="EP-image-preview">
-                                    <img src={previewImage} alt="Profile Preview" className='EP-img'/>
+                                <div className={style["EP-image-preview"]}>
+                                    <img src={previewImage} alt="Profile Preview" className={style['EP-img']}/>
                                 </div>
                             )}
 
                         </div>
                     </div>
-                    <div className="EP-form-group">
+                    <div className={style["EP-form-group"]}>
                         <label htmlFor="username">Username</label>
                         <input
                             type="text"
@@ -126,7 +126,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                         />
                     </div>
 
-                    <div className="EP-form-group">
+                    <div className={style["EP-form-group"]}>
                         <label htmlFor="bio">Bio</label>
                         <input
                             type="text"
@@ -136,7 +136,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                         />
                     </div>
 
-                    <div className="EP-form-group">
+                    <div className={style["EP-form-group"]}>
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
@@ -146,7 +146,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                         />
                     </div>
 
-                    <button type="submit" className="EP-submit-btn">
+                    <button type="submit" className={style["EP-submit-btn"]}>
                         Done
                     </button>
                 </form>

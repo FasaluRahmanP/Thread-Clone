@@ -5,7 +5,7 @@ import { IoImages } from "react-icons/io5";
 import { MdOutlineGifBox } from "react-icons/md";
 import { CiHashtag } from "react-icons/ci";
 import { BiPoll } from "react-icons/bi";
-
+import style from "./style.module.css"
 interface ThreadProps {
     isOpen: boolean;
     onClose: () => void;
@@ -64,45 +64,45 @@ const Threads: React.FC<ThreadProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null
 
     return (
-        <div className="thread-overlay">
-            <div className="thread-modal">
-                <button onClick={onClose} className="thread-closeButton">
+        <div className={style["thread-overlay"]}>
+            <div className={style["thread-modal"]}>
+                <button onClick={onClose} className={style["thread-closeButton"]}>
                     &times;
                 </button>
 
-                <div className="thread-content">
+                <div className={style["thread-content"]}>
                     {children}
-                    <div className="thread-thread">
+                    <div className={style["thread-thread"]}>
                         <textarea
                             name="thread"
                             id="thread"
                             placeholder="Write a post"
                             value={postContent}
                             onChange={handlePostChange}
-                            className="thread-textarea"
+                            className={style["thread-textarea"]}
                         />
                         {preview && (
-                            <div className="thread-image-preview-container">
-                                <img src={preview} alt="Preview" className="thread-image-preview" />
+                            <div className={style["thread-image-preview-container"]}>
+                                <img src={preview} alt="Preview" className={style["thread-image-preview"]} />
                             </div>
                         )}
-                        <div className="thread-file-upload-container">
+                        <div className={style["thread-file-upload-container"]}>
                             <input
                                 type="file"
                                 id="file-upload"
                                 accept="image/*"
                                 onChange={handleImageChange}
-                                className="thread-file-input"
+                                className={style["thread-file-input"]}
                             />
-                            <label htmlFor="file-upload" className="thread-file-upload-label">
-                                <IoImages className="thread-file-upload-label"/>
-                                <MdOutlineGifBox  className="thread-file-upload-label"/>
-                                <CiHashtag  className="thread-file-upload-label"/>
-                                <BiPoll  className="thread-file-upload-label"/>
+                            <label htmlFor="file-upload" className={style["thread-file-upload-label"]}>
+                                <IoImages className={style["thread-file-upload-label"]}/>
+                                <MdOutlineGifBox  className={style["thread-file-upload-label"]}/>
+                                <CiHashtag  className={style["thread-file-upload-label"]}/>
+                                <BiPoll  className={style["thread-file-upload-label"]}/>
                             </label>
                         </div>
                     </div>
-                    <div className="thread-post-thread">
+                    <div className={style["thread-post-thread"]}>
                         <PostBtn onClick={handlePostSubmit} />
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import { axiosInstance } from "@/Axios/axios";
 import { useState } from "react";
+import style from "./style.module.css"
 
 interface RepostProps {
     isOpen: boolean;
@@ -41,13 +42,13 @@ const Repost: React.FC<RepostProps> = ({ isOpen, onClose, postId, userProfilePic
 
 
     return (
-        <div className="repost-modaloverlay">
-            <div className="repost-modalcontent">
-                <button className="repost-closebutton" onClick={onClose}>&times;</button>
-                {error && <p className="repost-errormessage">{error}</p>}
-                <div className="repost-modalaction">
-                    <button className="repost-cancelbutton" onClick={onClose} disabled={loading}>Cancel</button>
-                    <button className="repost-repostbutton" onClick={HandleRepost} disabled={loading}>{loading ? "Reposting" : "Repost"}</button>
+        <div className={style["repost-modaloverlay"]}>
+            <div className={style["repost-modalcontent"]}>
+                <button className={style["repost-closebutton"]} onClick={onClose}>&times;</button>
+                {error && <p className={style["repost-errormessage"]}>{error}</p>}
+                <div className={style["repost-modalaction"]}>
+                    <button className={style["repost-cancelbutton"]} onClick={onClose} disabled={loading}>Cancel</button>
+                    <button className={style["repost-repostbutton"]} onClick={HandleRepost} disabled={loading}>{loading ? "Reposting" : "Repost"}</button>
                 </div>
             </div>
         </div>

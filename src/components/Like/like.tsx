@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { FaHeart } from "react-icons/fa6";
+import style from "./style.module.css"
 
 interface LikeButtonProps {
     initialLike: number
@@ -45,8 +46,8 @@ const LikeButton = ({ initialLike, postId, userId, likedUsers }: LikeButtonProps
     }
 
     return (
-        <button onClick={handleLike} className="comment-likeButton">
-            <FaHeart color={isLiked ? '#FF0034' :"white"}className='comment-like-icon' />
+        <button onClick={handleLike} className={style["comment-likeButton"]}>
+            <FaHeart color={isLiked ? '#FF0034' :"white"}className={style['comment-like-icon']} />
             <span style={{marginLeft:"6px"}}>{like}</span>
         </button>
     )

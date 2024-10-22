@@ -13,6 +13,7 @@ import PostBtn from '@/components/PostButton/postbutton';
 import ReplyButton from '@/components/ReplyButton/page';
 import RepostButton from '@/components/RepostButton/RepostButton';
 import Repost from '@/components/Repost/repost';
+import style from "./style.module.css"
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -66,13 +67,13 @@ const Page = () => {
   return (
     <>
       <Threads isOpen={isModalOpen} onClose={closeModal}>
-        <div className="thread-dp">
+        <div className={style["thread-dp"]}>
           <img
             src={currentUser?.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
             alt="profile"
-            className="thread-profile-image"
+            className={style["thread-profile-image"]}
           />
-          <p className="thread-profile-name">{username}</p>
+          <p className={style["thread-profile-name"]}>{username}</p>
         </div>
 
       </Threads>
@@ -89,25 +90,25 @@ const Page = () => {
           <div>
             <img src={currentUser?.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
               alt='Profile'
-              className='main-profile-image' />
-            <p className='main-profile-name'>{username}</p>
+              className={style['main-profile-image']} />
+            <p className={style['main-profile-name']}>{username}</p>
           </div>
         </div>
       </Reply>
-      <nav className='main-nav'><h1 className='main-heading'>For you</h1></nav>
+      <nav className={style['main-nav']}><h1 className={style['main-heading']}>For you</h1></nav>
       <div className="flex items-center justify-center h-screen">
         <div className="h-full w-6/12 bg-[#181818] rounded-3xl">
-          <div className='main-posts-container'>
-            <div className='main-new-container'>
-              <div className='main-new'>
-                <div className='main-dp'>
+          <div className={style['main-posts-container']}>
+            <div className={style['main-new-container']}>
+              <div className={style['main-new']}>
+                <div className={style['main-dp']}>
                   <ProfileImage
                     profilePic={currentUser?.profilePic}
                     altText="profile"
-                    className='main-profile-image'
+                    className={style['main-profile-image']}
                   />
                 </div>
-                <div className='main-text'>
+                <div className={style['main-text']}>
                   <span>What's new?</span>
                 </div>
               </div>
@@ -115,24 +116,24 @@ const Page = () => {
               <PostBtn onClick={openModal}></PostBtn>
             </div>
 
-            <div className='main-post-list'>
+            <div className={style['main-post-list']}>
               {posts.map((post) => (
-                <div key={post._id} className='main-post-item'>
-                  <div className='main-post-user'>
+                <div key={post._id} className={style['main-post-item']}>
+                  <div className={style['main-post-user']}>
                     <img src={post.postById?.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
-                      alt="profile" className='main-profile-image'></img>
-                    <div className='main-text-username'>
-                      <div className='main-username-time'>
-                        <p className='main-profile-name'>{post.postById.username}</p>
-                        <span className='main-time'>
+                      alt="profile" className={style['main-profile-image']}></img>
+                    <div className={style['main-text-username']}>
+                      <div className={style['main-username-time']}>
+                        <p className={style['main-profile-name']}>{post.postById.username}</p>
+                        <span className={style['main-time']}>
                           <TimeAgo dateString={post.createdOn}></TimeAgo>
                         </span>
                       </div>
-                      <p className='main-post-text'>{post.text}</p>
+                      <p className={style['main-post-text']}>{post.text}</p>
                     </div>
                   </div>
-                  {post.image && <img src={post.image} alt='Post' className='main-post-image' />}
-                  <div className='main-post-icons'>
+                  {post.image && <img src={post.image} alt='Post' className={style['main-post-image']} />}
+                  <div className={style['main-post-icons']}>
                     {currentUser ? (
                       <LikeButton
                         initialLike={post.likes.length}
@@ -141,11 +142,11 @@ const Page = () => {
                         likedUsers={post.likes}
                       ></LikeButton>
                     ) : (
-                      <FaHeart className='comment-likeButton' style={{ fontSize: "20px" }} />
+                      <FaHeart className={style['comment-likeButton']} style={{ fontSize: "20px" }} />
                       // <p>login</p>
                     )}
                     <br></br>
-                    <div className='main-reply' onClick={() => {
+                    <div className={style['main-reply']} onClick={() => {
                       openComment();
                       setPostId(post._id)
                     }}>

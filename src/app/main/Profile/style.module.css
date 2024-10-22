@@ -1,0 +1,103 @@
+.main-nav {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.main-heading {
+    background-color: #101010;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    color: #F3F5F7;
+    text-align: center;
+    margin-top: -32px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.profile-container {
+    background-color: #181818;
+    border-radius: 16px;
+    height: 100%;
+}
+
+.profile-details {
+    color: white;
+    margin-top: 130px;
+}
+
+.profile-name {
+    font-size: 24px;
+    color: #F3F5F7;
+    margin-left: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.profile-username {
+    font-size: 15px;
+    color: #F3F5F7;
+    margin-left: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.profile-image {
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.profile-img {
+    margin-left: 550px;
+    margin-top: -70px;
+}
+
+.profile-followers {
+    color: #777777;
+    margin-left: 30px;
+}
+
+.edit-profile {
+    color: #F3F5F7;
+    padding: 0px 16px;
+    align-items: center;
+}
+
+.edit-button {
+    margin-top: 30px;
+    padding: 5px;
+    cursor: pointer;
+    border: 2px solid #1E1E1E;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.profile-state {
+    display: flex;
+    color: #F3F5F7;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.profile-statediv {
+    border-bottom: 3px solid #333;
+    padding: 10px 75px 10px 75px;
+}
+
+.profile-statediv:hover {
+    border-bottom: 3px solid white;
+}
