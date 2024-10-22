@@ -1,80 +1,99 @@
-"use client"
-import { axiosInstance } from '@/Axios/axios';
-import ProfileImage from '@/components/ProfileImage/page';
-import TimeAgo from '@/components/TimeAgo/page';
+'use client';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '@/app/Hooks/useAppDispatch';
+import { fetchuser } from '@/app/Store/Reducer/UserSlice';
+import ProfileImage from '@/components/ProfileImage/page';
 
-const Page = () => {
+const Profile = () => {
+  const dispatch = useAppDispatch();
+  const { users } = useAppSelector((state) => state.users);
 
-  const [posts, setPosts] = useState<Post[]>([])
+  const [name, setName] = useState<string>('');
+  const [username, setUserName] = useState<string>('');
+  const [profilePic, setProfilePic] = useState<string>('');
+  const [followers, setfollowers] = useState<string>('');
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [userBio, setUserBio] = useState<string>('');
 
-  type Post = {
-    _id: string
-    text: string
-    image?: string
-    likes: string[]
-    replies: Reply[]
-    createdOn: string
-    reposts: string[]
-    username: string
-    userProfilePic: string
-  }
-
-  type Reply = {
-    _id: string
-    UserId: string
-    userProfilePic: string
-    username: string
-    text: string
-  }
-
-  const fetchPosts = async () => {
-    try {
-      const userId = localStorage.getItem("userId")
-      if (userId) {
-        const response = await axiosInstance.get(`api/posts/${userId}`)
-        setPosts(response.data.post)
-
-      }
-    } catch (error) {
-      console.error("Failed to FetchPost", error)
-    }
-  }
   useEffect(() => {
-    fetchPosts()
-  }, [])
+    dispatch(fetchuser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId && users.length > 0) {
+      const user = users.find((user) => user._id === userId);
+      if (user) {
+        setName(user.name || '');
+        setUserName(user.username || '');
+        setProfilePic(user.profilePic || '');
+        setUserBio(user.bio || '');
+        setfollowers(user.followers[followers.length] || '');
+      }
+    }
+  }, [users]);
+
+
+  const handleEditProfileOpen = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const handleEditProfileClose = () => {
+    setIsEditModalOpen(false);
+  };
+
   return (
     <>
-      <nav className='main-nav'><h1 className='main-heading'>Profile</h1></nav>
+      <nav className='main-nav'><h1 className='main-heading'>For you</h1></nav>
       <div className="flex items-center justify-center h-screen">
-        <div className="h-auto w-6/12 bg-[#201d1d] rounded-3xl mt-11">
-          <div className='profile-list'>
-            {posts.length > 0 ? (
-              posts.map((post) => (
-                <div key={post._id} className='profile-item'>
-                  <div className='profile-user'>
-                    <ProfileImage
-                      profilePic={post.userProfilePic}
-                      altText='Profile'
-                      className='profile-image'
-                    />
-                    <div className='post-details'>
-                      <h3>{post.username}</h3>
-                      <TimeAgo dateString={post.createdOn}></TimeAgo>
-                    </div>
-                    <div className='profile-menu-container'>
-                      
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (<p>No posts available</p>)}
+        <div className="h-full w-6/12 bg-[#181818] rounded-3xl">
+          {/* <EditProfile isOpen={isEditModalOpen} onClose={handleEditProfileClose} /> */}
+          <div className="profile-container">
+            <div className="profile-details">
 
+              <h1 className='profile-name'>{name}</h1>
+              <span className='profile-username'>{username}</span>
+
+              <p className="profile-discrption">
+                {userBio}
+              </p>
+              <p className='profile-followers'>{followers.length} followers</p>
+
+            </div>
+
+            <div className="profile-image">
+              <ProfileImage
+                altText="Profile"
+                profilePic={profilePic}
+                className="profile-img"
+              />
+            </div>
+            <div className="edit-profile">
+              <div
+                className="edit-button"
+                onClick={handleEditProfileOpen}
+              >
+                Edit profile
+              </div>
+            </div>
+
+            <div className="profile-state">
+              <div className="profile-statediv">
+                <Link href={'/main/Profile'}>Threads</Link>
+              </div>
+              <div className="profile-statediv">
+                <Link href={'/main/Profile/replies'}>Replies</Link>
+              </div>
+              <div className="profile-statediv">
+                <Link href={'/main/Profile/reposts'}>Reposts</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
 
-export default Page;
+export default Profile;

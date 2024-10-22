@@ -30,7 +30,7 @@ const Page = () => {
     <>
       <nav className='main-nav'><h1 className='main-heading'>Search</h1></nav>
       <div className="flex items-center justify-center h-auto">
-        <div className="h-auto w-6/12 bg-[#201d1d] rounded-3xl mt-11">
+        <div className="h-auto w-6/12 bg-[#181818] rounded-3xl mt-11">
           <div className='search-bar'>
             <IoSearch style={{ color: "grey", fontSize: "20px" }} />
             <input

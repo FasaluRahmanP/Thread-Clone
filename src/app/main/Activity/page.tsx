@@ -17,7 +17,7 @@ const Page = () => {
         <>
             <nav className='main-nav'><h1 className='main-heading'>Activity</h1></nav>
             <div className="flex items-center justify-center h-screen mt-20">
-                <div className="h-auto w-6/12 bg-[#201d1d] rounded-3xl mt-auto">
+                <div className="h-auto w-6/12 bg-[#181818] rounded-3xl mt-auto">
                     {error && <div className='activity-error'>{error}</div>}
                     {notifications.length === 0 && status !== "Loading" && !error && (
                         <div>No Notification Available</div>

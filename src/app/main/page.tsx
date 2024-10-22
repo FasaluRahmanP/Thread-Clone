@@ -96,7 +96,7 @@ const Page = () => {
       </Reply>
       <nav className='main-nav'><h1 className='main-heading'>For you</h1></nav>
       <div className="flex items-center justify-center h-screen">
-        <div className="h-full w-6/12 bg-[#201d1d] rounded-3xl">
+        <div className="h-full w-6/12 bg-[#181818] rounded-3xl">
           <div className='main-posts-container'>
             <div className='main-new-container'>
               <div className='main-new'>
