@@ -90,12 +90,13 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
 
                 <form className={style["EP-form"]} onSubmit={handleSubmit}>
                     <div className={style["EP-form-group"]}>
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name" className={style['label']}>Name</label>
                         <input
                             type="text"
                             id="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            className={style['input']}
                         />
 
                         <div className={style["EP-profile-pic-container"]}>
@@ -107,6 +108,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                                 ref={fileInputRef}
                                 onChange={handleFileChange}
                                 style={{ display: 'none' }}
+                                className={style['input']}
                             />
                             {previewImage && (
                                 <div className={style["EP-image-preview"]}>
@@ -117,32 +119,35 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                         </div>
                     </div>
                     <div className={style["EP-form-group"]}>
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username" className={style['label']}>Username</label>
                         <input
                             type="text"
                             id="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            className={style['input']}
                         />
                     </div>
 
                     <div className={style["EP-form-group"]}>
-                        <label htmlFor="bio">Bio</label>
+                        <label htmlFor="bio" className={style['label']}>Bio</label>
                         <input
                             type="text"
                             id="bio"
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
+                            className={style['input']}
                         />
                     </div>
 
                     <div className={style["EP-form-group"]}>
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email" className={style['label']}>Email</label>
                         <input
                             type="email"
                             id="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            className={style['input']}
                         />
                     </div>
 
