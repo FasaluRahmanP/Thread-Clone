@@ -57,6 +57,10 @@
 .profile-img {
     margin-left: 550px;
     margin-top: -100px;
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .profile-followers {

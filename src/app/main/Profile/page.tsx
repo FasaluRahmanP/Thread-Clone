@@ -82,7 +82,7 @@ const Profile = () => {
 
             <div className={style["profile-state"]}>
               <div className={style["profile-statediv"]}>
-                <Link href={'/main/Profile'}>Threads</Link>
+                <Link href={'/main/Profile/Mprofile'}>Threads</Link>
               </div>
               <div className={style["profile-statediv"]}>
                 <Link href={'/main/Profile/replies'}>Replies</Link>
