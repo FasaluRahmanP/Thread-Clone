@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/app/Hooks/useAppDispatch';
 import { fetchuser } from '@/app/Store/Reducer/UserSlice';
 import ProfileImage from '@/components/ProfileImage/page';
-import EditProfile from '../EditProfile/page';
+import EditProfile from '../../app/main/EditProfile/page';
 import style from "./style.module.css"
 
 const Profile = () => {
@@ -48,7 +48,7 @@ const Profile = () => {
   return (
     <>
       <nav className={style['main-nav']}><h1 className={style['main-heading']}>For you</h1></nav>
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-96">
         <div className="h-full w-6/12 bg-[#181818] rounded-3xl">
           <EditProfile isOpen={isEditModalOpen} onClose={handleEditProfileClose} />
           <div className={style["profile-container"]}>

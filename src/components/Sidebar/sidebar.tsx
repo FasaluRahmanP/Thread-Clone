@@ -65,7 +65,7 @@ const Sidebar = () => {
             </StyledButton>
           </Link>
 
-          <Link href={"/main/Profile"}>
+          <Link href={"/main/MainProfile"}>
             <StyledButton ariaLabel="Profile">
               <svg aria-label="Profile" fill="transparent" height="26" role="img" viewBox="0 0 26 26" width="26">
                 <title>Profile</title>

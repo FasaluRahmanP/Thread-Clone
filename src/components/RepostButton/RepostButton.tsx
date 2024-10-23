@@ -4,6 +4,10 @@ import style from "./style.module.css"
 
  interface repostButtonProps {
     repostCount: number
+    setPostId: (postId: string) => void
+    opernRepost: () => void
+    postId: string
+
  }
 const RepostButton: React.FC<repostButtonProps> = ({ repostCount }) => {
   return (

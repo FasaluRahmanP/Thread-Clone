@@ -7,7 +7,7 @@ import style from "./style.module.css"
 interface LikeButtonProps {
     initialLike: number
     postId: string
-    userId: string
+    userId: string|any
     likedUsers: string[]  
 }
 
