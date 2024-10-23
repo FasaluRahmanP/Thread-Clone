@@ -85,10 +85,10 @@ const Profile = () => {
                 <Link href={'/main/Profile/Mprofile'}>Threads</Link>
               </div>
               <div className={style["profile-statediv"]}>
-                <Link href={'/main/Profile/replies'}>Replies</Link>
+               <div>Replies</div>
               </div>
               <div className={style["profile-statediv"]}>
-                <Link href={'/main/Profile/reposts'}>Reposts</Link>
+              <div>Reposts</div>
               </div>
             </div>
           </div>
