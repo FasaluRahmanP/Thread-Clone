@@ -4,6 +4,7 @@ import { fetchuser } from '@/app/Store/Reducer/UserSlice';
 import React, { useEffect, useState } from 'react';
 import { IoSearch } from "react-icons/io5";
 import style from "./style.module.css"
+import FollowBtn from '@/components/Follow/follow';
 
 const Page = () => {
   const { users } = useAppSelector((state) => state.users);
@@ -66,7 +67,9 @@ const Page = () => {
                         <p className={style['search-profile-name']}>{user.username}</p>
                         <p className={style['search-followers']}>{user.followers.length} followers</p>
                       </div>
-                      <button className={style['search-follow-button']}>Follow</button>
+                      <div className={style['search-follow-btn']}>
+                      <FollowBtn userId={user._id} />
+                      </div>
                     </div>
                   </div>
                 </div>
