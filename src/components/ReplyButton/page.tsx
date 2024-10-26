@@ -3,9 +3,6 @@ import React from 'react'
 import style from "./style.module.css"
 interface ReplyButtonProps {
   CommentCount: number
-  openComment: () => void
-  postId: string
-  setPostId: (postId: string) => void
 }
 
 const ReplyButton: React.FC<ReplyButtonProps> = ({ CommentCount }) => {

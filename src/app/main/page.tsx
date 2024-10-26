@@ -150,7 +150,7 @@ const Page = () => {
                       openComment();
                       setPostId(post._id)
                     }}>
-                      <ReplyButton CommentCount={post.replies.length}></ReplyButton>
+                      <ReplyButton CommentCount={post.replies.length}/>
                     </div>
                     <div onClick={() => { setPostId(post._id); openRepost() }}>
                       <RepostButton repostCount={post.reposts.length} />
