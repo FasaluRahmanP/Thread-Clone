@@ -1,19 +1,7 @@
 import { axiosInstance } from "@/Axios/axios"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-interface User {
-    _id: string
-    name: string
-    username: string
-    email: string
-    profilePic: string | any
-    notification: any;
-}
-interface Notification {
-    id: string
-    description: string
-    senderUserId: User
-}
+
 interface NotificationState {
     notifications: Notification[]
     status: "Idle" | "Loading" | "Succeeded" | "Failed"

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../Hooks/useAppDispatch";
 import ReusableInput from "@/app/Ui/StyledLogin";
 import { loginUser } from "../Store/Reducer/LoginSlice";
+import { setCookies } from "@/Library/utilities/setCookies";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -20,7 +21,7 @@ const Login: React.FC = () => {
   useEffect(() => {
     if (status === 'SUCCESSFULL' && user) {
         const userId = user._id;
-        localStorage.setItem('userId', userId);
+        setCookies(userId);
         router.push('/main');
         console.log(userId)
     }
