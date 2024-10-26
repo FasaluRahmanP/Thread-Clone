@@ -1,4 +1,3 @@
-// "use client"
 import ProfileImage from '@/components/ProfileImage/page';
 import React, { useEffect } from 'react';
 import style from "./style.module.css";
@@ -64,7 +63,7 @@ export default async function ActivityPage() {
                                         <div>{notification.description}</div>
                                     </div>
                                 </div>
-                                <button className={style['search-follow-button']}>Follow</button>
+                                {/* <button className={style['search-follow-button']}>Follow</button> */}
                             </div>
                         ))
                     )}

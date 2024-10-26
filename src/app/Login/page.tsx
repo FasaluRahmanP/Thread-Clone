@@ -22,6 +22,7 @@ const Login: React.FC = () => {
     if (status === 'SUCCESSFULL' && user) {
         const userId = user._id;
         setCookies(userId);
+        localStorage.setItem("userId",userId)
         router.push('/main');
         console.log(userId)
     }
