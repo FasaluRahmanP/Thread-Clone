@@ -23,11 +23,12 @@
   }
   
   .comment-post-image {
-    width: 50%;
+    width: 150px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-left: 50px;
-    margin-top: -180px;
+    margin-top: -210px;
   }
   
   .comment-post-image-container {

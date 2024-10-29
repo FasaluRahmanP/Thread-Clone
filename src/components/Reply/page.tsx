@@ -92,8 +92,8 @@ const Reply: React.FC<ReplyProps> = ({ isOpen, onClose, children, postId, userId
               )}
             </div>
             <div>
-              <h1 className='h1'>{post.postById.username}</h1>
-              <h2 className='h2'>{post.text}</h2>
+              <h1 className='h1'style={{color:"white"}}>{post.postById.username}</h1>
+              <h2 className='h2'style={{color:"white"}}>{post.text}</h2>
             </div>
             <div className={style["comment-the-line"]}></div>
             {post.image && (
@@ -131,9 +131,9 @@ const Reply: React.FC<ReplyProps> = ({ isOpen, onClose, children, postId, userId
                   altText={reply.username}
                   className={style["comment-profile-image"]}
                 />
-                <h4 className='h4'>{reply.username}</h4>
+                <h4 className='h4'style={{color:"white"}}>{reply.username}</h4>
               </div>
-              <p className='p'>{reply.text}</p>
+              <p className='p' style={{color:"white"}}>{reply.text}</p>
               <br></br>
             </div>
           ))
