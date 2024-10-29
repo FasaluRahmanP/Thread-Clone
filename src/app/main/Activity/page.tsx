@@ -51,14 +51,14 @@ export default async function ActivityPage() {
                                 <div className={style['activity-senderinfo']}>
                                     <div className={style['activity-ProfilePicContainer']}>
                                         <ProfileImage
-                                            profilePic={notification.senderUserId.profilePic}
+                                            profilePic={notification.senderUserId?.profilePic}
                                             altText='Profile'
                                             className={style['activity-profilepic']}
                                         />
                                     </div>
                                     <div className={style['activity-sendername']}>
                                         <div className={style['activity-sender']}>
-                                            {notification.senderUserId.name}
+                                            {notification.senderUserId?.name}
                                         </div>
                                         <div>{notification.description}</div>
                                     </div>

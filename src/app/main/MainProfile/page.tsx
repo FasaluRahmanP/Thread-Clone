@@ -27,6 +27,7 @@ const page = () => {
         replies: Reply[];
         likes: string[];
         reposts: string[];
+        postById:string
     };
 
     type Reply = {
@@ -79,7 +80,7 @@ const page = () => {
                                         className={styles['profile-image']}
                                     />
                                     <div className={styles['post-time']}>
-                                        <h3>{post.username}red_hulk</h3>
+                                        <h3>{post.username}falcon</h3>
                                         <TimeAgo dateString={post.createdOn} />
                                     </div>
                                     <div className={styles['menu-container']}>
@@ -105,17 +106,17 @@ const page = () => {
                                     <div className={styles['comment']}>
                                         <ReplyButton
                                             CommentCount={post.replies.length}
-                                            openComment={() => setSelectedPostId(post._id)}
-                                            postId={post._id}
-                                            setPostId={setSelectedPostId}
+                                            // openComment={() => setSelectedPostId(post._id)}
+                                            // postId={post._id}
+                                            // setPostId={setSelectedPostId}
                                         />
                                     </div>
                                     <div className={styles['repost']}>
                                         <RepostButton
                                             repostCount={post.reposts.length}
-                                            postId={post._id}
-                                            setPostId={setSelectedPostId}
-                                            opernRepost={() => setSelectedPostId(post._id)}
+                                            // postId={post._id}
+                                            // setPostId={setSelectedPostId}
+                                            // opernRepost={() => setSelectedPostId(post._id)}
                                         />
                                     </div>
                                 </div>

@@ -42,7 +42,7 @@ const FollowBtn: React.FC<FollowBtnProps> = ({ userId }) => {
 
     return (
         <button onClick={handleFollow} className={styles['follow-btn']}>
-            {isFollowing ? 'Following' : 'Follow'}
+            {isFollowing ? 'Followed' : 'Follow'}
         </button>
     );
 };
