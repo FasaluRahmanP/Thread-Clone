@@ -4,6 +4,9 @@ import axios from 'axios';
 import ProfileImage from '../ProfileImage/page';
 import { axiosInstance } from '@/Axios/axios';
 import style from "./style.module.css"
+import { useAppDispatch } from '@/app/Hooks/useAppDispatch';
+import { closeComment } from '@/app/Store/Reducer/modalSlice';
+import { fetchPosts } from '@/app/Store/Reducer/PostSlice';
 interface ReplyProps {
   isOpen: boolean;
   onClose: () => void;
@@ -18,6 +21,7 @@ const Reply: React.FC<ReplyProps> = ({ isOpen, onClose, children, postId, userId
   const [post, setPost] = useState<any>(null);
   const [comment, setComment] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const dispatch=useAppDispatch()
 
   useEffect(() => {
     if (isOpen) {
@@ -55,6 +59,8 @@ const Reply: React.FC<ReplyProps> = ({ isOpen, onClose, children, postId, userId
       );
 
       setComment('');
+      dispatch(closeComment())
+      dispatch(fetchPosts())
     } catch (error) {
       console.error("Failed to reply to post:", error);
     } finally {

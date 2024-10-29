@@ -4,6 +4,8 @@ import { BsPersonFillAdd } from 'react-icons/bs';
 import style from "./style.module.css"
 import { useRouter } from 'next/navigation';
 import { axiosInstance } from '@/Axios/axios';
+import { useAppDispatch } from '@/app/Hooks/useAppDispatch';
+import { fetchuser } from '@/app/Store/Reducer/UserSlice';
 
 interface EditProfileProps {
     isOpen: boolean;
@@ -18,6 +20,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
     const [profilePic, setProfilePic] = useState<File | null>(null);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const router = useRouter();
+    const dispatch=useAppDispatch()
 
     const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
@@ -72,6 +75,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
                 localStorage.setItem('user', JSON.stringify(response.data.user));
 
                 onClose();
+                dispatch(fetchuser())
             }
         } catch (error) {
             console.log('Error updating profile:', error);

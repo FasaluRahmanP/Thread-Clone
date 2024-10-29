@@ -1,6 +1,8 @@
 import { axiosInstance } from "@/Axios/axios";
 import { useState } from "react";
 import style from "./style.module.css"
+import { useAppDispatch } from "@/app/Hooks/useAppDispatch";
+import { fetchPosts } from "@/app/Store/Reducer/PostSlice";
 
 interface RepostProps {
     isOpen: boolean;
@@ -13,6 +15,7 @@ interface RepostProps {
 const Repost: React.FC<RepostProps> = ({ isOpen, onClose, postId, userProfilePic, userId, username }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
+    const dispatch=useAppDispatch()
     const HandleRepost = async () => {
         setError(null);
         const repost = {
@@ -30,6 +33,7 @@ const Repost: React.FC<RepostProps> = ({ isOpen, onClose, postId, userProfilePic
             console.log("Reposted:", response.data);
             setLoading(false);
             onClose();
+            dispatch(fetchPosts())
         } catch (err) {
             console.error("Failed to repost:", err);
             setError("Failed to repost. Please try again.");
