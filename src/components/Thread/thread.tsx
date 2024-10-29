@@ -6,6 +6,8 @@ import { MdOutlineGifBox } from "react-icons/md";
 import { CiHashtag } from "react-icons/ci";
 import { BiPoll } from "react-icons/bi";
 import style from "./style.module.css"
+import { useAppDispatch } from "@/app/Hooks/useAppDispatch";
+import { fetchPosts } from "@/app/Store/Reducer/PostSlice";
 interface ThreadProps {
     isOpen: boolean;
     onClose: () => void;
@@ -16,6 +18,7 @@ const Threads: React.FC<ThreadProps> = ({ isOpen, onClose, children }) => {
     const [postContent, setPostContent] = useState<string>('')
     const [postImage, setPostImage] = useState<any>(null)
     const [preview, setPreview] = useState<string | null>(null)
+    const dispatch=useAppDispatch()
 
     const handlePostSubmit = async () => {
         const userId = localStorage.getItem("userId");
@@ -43,6 +46,7 @@ const Threads: React.FC<ThreadProps> = ({ isOpen, onClose, children }) => {
         setPostContent("")
         setPostImage(null)
         onClose()
+        dispatch(fetchPosts())
     }
 
     const handlePostChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
