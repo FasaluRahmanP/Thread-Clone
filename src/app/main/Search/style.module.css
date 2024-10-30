@@ -46,7 +46,6 @@
 .search-result {
     display: flex;
     flex-direction: column;
-    /* gap: 20px; */
 }
 
 .search-result-item {
