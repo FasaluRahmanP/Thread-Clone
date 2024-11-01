@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/app/Hooks/useAppDispatch';
 import { fetchuser } from '@/app/Store/Reducer/UserSlice';
 import ProfileImage from '@/components/ProfileImage/page';
-import EditProfile from '../../app/main/EditProfile/page';
+import { EditProfile } from '../../app/main/EditProfile/page';
 import style from "./style.module.css"
 
 const Profile = () => {
@@ -85,10 +85,10 @@ const Profile = () => {
                 <Link href={'/main/Profile/Mprofile'}>Threads</Link>
               </div>
               <div className={style["profile-statediv"]}>
-               <div>Replies</div>
+                <div>Replies</div>
               </div>
               <div className={style["profile-statediv"]}>
-              <div>Reposts</div>
+                <div>Reposts</div>
               </div>
             </div>
           </div>
