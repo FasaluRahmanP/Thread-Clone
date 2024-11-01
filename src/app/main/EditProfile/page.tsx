@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 import styles from './editProfile.module.scss';
 import { BsPersonFillAdd } from 'react-icons/bs';
