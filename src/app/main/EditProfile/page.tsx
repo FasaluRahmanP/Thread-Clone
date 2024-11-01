@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import styles from './editProfile.module.scss';
 import { BsPersonFillAdd } from 'react-icons/bs';
 import style from "./style.module.css"
 import { useRouter } from 'next/navigation';
@@ -13,7 +12,7 @@ interface EditProfileProps {
     onClose: () => void;
 }
 
-const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
+export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -165,4 +164,3 @@ const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
     );
 };
 
-export default EditProfile;
