@@ -12,7 +12,7 @@ interface EditProfileProps {
     onClose: () => void;
 }
 
-export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
+  const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -163,3 +163,6 @@ export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, onClose }) => 
         </div>
     );
 };
+
+
+export default EditProfile; 

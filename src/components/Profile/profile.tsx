@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/app/Hooks/useAppDispatch';
 import { fetchuser } from '@/app/Store/Reducer/UserSlice';
 import ProfileImage from '@/components/ProfileImage/page';
-import { EditProfile } from '@/app/main/EditProfile/page';
+import EditProfile from '@/app/main/EditProfile/page';
 import style from "./style.module.css"
 
 const Profile = () => {
