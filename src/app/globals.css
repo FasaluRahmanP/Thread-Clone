@@ -13,7 +13,6 @@
     --foreground: #ededed;
   }
 }
-
 body {
   color: var(--foreground);
   background: var(--foreground);
